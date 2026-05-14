@@ -5,31 +5,6 @@ from conan.models import KnowledgeBase, KPIEntry, TableSource, KPITier, KPIMatur
 from conan.kb.writer import write_kb, log_session
 
 
-@pytest.fixture
-def sample_kb():
-    return KnowledgeBase(
-        project_name="test",
-        kpis=[
-            KPIEntry(
-                id="REV-001",
-                metric="monthly_revenue",
-                domain="revenue",
-                tier=KPITier.l0,
-                maturity=KPIMaturity.validated,
-                confidence_ceiling=90,
-                source_table="fct_orders",
-                description="Monthly revenue from all orders",
-                formula="SUM(amount)",
-            )
-        ],
-        sources=[
-            TableSource(table_name="agg_daily_revenue", tier=SourceTier.t1),
-            TableSource(table_name="fct_orders", tier=SourceTier.t2),
-            TableSource(table_name="stg_public_orders", tier=SourceTier.t3),
-        ],
-    )
-
-
 def test_write_kb_creates_kpis_index(tmp_path, sample_kb):
     write_kb(sample_kb, tmp_path)
     content = (tmp_path / "kpis-index.md").read_text()
