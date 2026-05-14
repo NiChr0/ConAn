@@ -1,9 +1,9 @@
 from __future__ import annotations
 from enum import Enum
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 # ── Semantic Layer (input from Schemalytics) ──────────────────────────────────
@@ -47,11 +47,14 @@ class SemanticLayer(BaseModel):
 
     @classmethod
     def from_yaml_string(cls, content: str) -> "SemanticLayer":
-        return cls(**yaml.safe_load(content))
+        data = yaml.safe_load(content)
+        if not isinstance(data, dict):
+            raise ValueError(f"Expected a YAML mapping, got {type(data).__name__}")
+        return cls(**data)
 
     @classmethod
     def from_yaml_file(cls, path: Path) -> "SemanticLayer":
-        return cls.from_yaml_string(path.read_text())
+        return cls.from_yaml_string(path.read_text(encoding="utf-8"))
 
 
 # ── Knowledge Base ────────────────────────────────────────────────────────────
@@ -78,7 +81,7 @@ class KPIEntry(BaseModel):
     domain: str
     tier: KPITier = KPITier.l2
     maturity: KPIMaturity = KPIMaturity.directional
-    confidence_ceiling: int = 70
+    confidence_ceiling: int = Field(default=70, ge=0, le=100)
     source_table: str = ""
     description: str = ""
     formula: str = ""
@@ -101,7 +104,7 @@ class EnrichmentResult(BaseModel):
     metric_id: str
     tier: KPITier
     maturity: KPIMaturity
-    confidence_ceiling: int
+    confidence_ceiling: int = Field(..., ge=0, le=100)
     description: str
     formula: str = ""
     notes: str = ""
@@ -111,7 +114,7 @@ class EnrichmentSummary(BaseModel):
     gaps: list[str] = []
 
 class OrchestratorDispatch(BaseModel):
-    skill: str  # "data-queries" or "product-analyst"
+    skill: Literal["data-queries", "product-analyst"]
     reasoning: str
     sub_questions: list[str] = []
 
@@ -127,7 +130,7 @@ class DiagnosticQueries(BaseModel):
 
 class AnalysisResult(BaseModel):
     answer: str
-    confidence: int
+    confidence: int = Field(..., ge=0, le=100)
     confidence_justification: str
 
 class SkillResult(BaseModel):
@@ -135,5 +138,5 @@ class SkillResult(BaseModel):
     sql: str | None = None
     source_table: str | None = None
     source_tier: SourceTier | None = None
-    confidence: int
+    confidence: int = Field(..., ge=0, le=100)
     confidence_justification: str
