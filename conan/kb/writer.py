@@ -2,7 +2,7 @@ import json
 import uuid
 from datetime import datetime
 from pathlib import Path
-from conan.models import KnowledgeBase, SourceTier
+from conan.models import KnowledgeBase, KPIEntry, SourceTier
 
 
 def write_kb(kb: KnowledgeBase, output_path: Path) -> None:
@@ -35,7 +35,7 @@ def _write_kpis_index(kb: KnowledgeBase, path: Path) -> None:
 
 
 def _write_domain_files(kb: KnowledgeBase, path: Path) -> None:
-    domains: dict[str, list] = {}
+    domains: dict[str, list[KPIEntry]] = {}
     for kpi in kb.kpis:
         domains.setdefault(kpi.domain, []).append(kpi)
 
@@ -96,8 +96,10 @@ def _init_queries_index(path: Path) -> None:
 
 
 def log_session(kb_path: str | Path, question: str, answer: str) -> None:
+    sessions_dir = Path(kb_path) / "sessions"
+    sessions_dir.mkdir(parents=True, exist_ok=True)
     session_id = uuid.uuid4().hex[:8]
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     filename = f"{timestamp}-{session_id}.md"
     content = f"# Session {session_id}\n\n**Question:** {question}\n\n**Answer:**\n{answer}\n"
-    (Path(kb_path) / "sessions" / filename).write_text(content)
+    (sessions_dir / filename).write_text(content)
