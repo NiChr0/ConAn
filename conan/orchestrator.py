@@ -33,7 +33,7 @@ class Orchestrator:
     def _dispatch(self, question: str) -> OrchestratorDispatch:
         return query_structured(
             _SYSTEM_DISPATCH, question, OrchestratorDispatch,
-            model=self.model, max_tokens=128,
+            model=self.model, max_tokens=2048,
         )
 
     def _format_answer(self, result: SkillResult) -> str:

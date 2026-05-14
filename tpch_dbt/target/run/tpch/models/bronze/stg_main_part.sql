@@ -1,0 +1,16 @@
+
+  
+  create view "tpch"."main"."stg_main_part__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    p_partkey,
+    p_name,
+    p_mfgr,
+    p_brand,
+    p_type,
+    p_size,
+    p_container,
+    p_retailprice,
+    p_comment
+from "tpch"."main"."part"
+  );

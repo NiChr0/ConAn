@@ -1,0 +1,136 @@
+version: 2
+
+models:
+
+  - name: fct_lineitem
+    description: "one row per line item"
+    meta:
+      layer: silver
+      type: fact
+      grain: one row per line item
+    columns:
+      - name: fct_lineitem_sk
+        description: "Surrogate key for this fact (system-generated)"
+        tests:
+          - unique
+          - not_null
+      
+
+
+
+      - name: l_orderkey
+        description: "Foreign key to l_orderkey dimension"
+
+        tests:
+
+          - not_null
+
+
+
+
+
+
+      - name: l_partkey
+        description: "Foreign key to l_partkey dimension"
+
+        tests:
+
+          - not_null
+
+
+
+
+
+
+      - name: l_suppkey
+        description: "Foreign key to l_suppkey dimension"
+
+        tests:
+
+          - not_null
+
+
+
+
+
+      - name: l_shipdate
+        description: "Primary date/time for this transaction"
+
+        tests:
+          - not_null
+
+
+
+      - name: l_quantity
+        description: "L Quantity - numeric measure"
+
+      - name: l_extendedprice
+        description: "L Extendedprice - numeric measure"
+
+      - name: l_discount
+        description: "L Discount - numeric measure"
+
+      - name: l_tax
+        description: "L Tax - numeric measure"
+
+
+      - name: line_total
+        description: "Derived: l_extendedprice * (1 - l_discount)"
+
+      - name: net_revenue
+        description: "Derived: l_extendedprice * (1 - l_discount) * (1 - l_tax)"
+
+
+
+  - name: fct_orders
+    description: "one row per order"
+    meta:
+      layer: silver
+      type: fact
+      grain: one row per order
+    columns:
+      - name: fct_orders_sk
+        description: "Surrogate key for this fact (system-generated)"
+        tests:
+          - unique
+          - not_null
+      
+
+
+
+      - name: o_orderkey
+        description: "Foreign key to o_orderkey dimension"
+
+        tests:
+
+          - not_null
+
+
+
+
+
+
+      - name: o_custkey
+        description: "Foreign key to o_custkey dimension"
+
+        tests:
+
+          - not_null
+
+
+
+
+
+      - name: o_orderdate
+        description: "Primary date/time for this transaction"
+
+        tests:
+          - not_null
+
+
+
+      - name: o_totalprice
+        description: "O Totalprice - numeric measure"
+
+
+

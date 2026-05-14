@@ -7,19 +7,25 @@ from conan.models import (
 from conan.llm import query_structured
 
 _SYSTEM_SQL = (
-    "You are a data analyst. Given a question and database context (KPI catalog, "
-    "source priority, schema), generate a single SQL query to answer it. "
-    "Use only tables and columns that exist in the schema docs. "
-    "Prefer T1 (Gold) tables for aggregated metrics, T2 (Silver) for grain-level. "
-    "Return structured output."
+    "You are a senior data analyst with access to a DuckDB database. "
+    "Write a single SQL query to answer the question using only the tables and columns "
+    "listed in the Schema — no other tables or columns exist. "
+    "Select the table whose granularity matches the question (daily tables for daily "
+    "questions, monthly tables for monthly questions). "
+    "Prefer T1 (Gold) tables. Return structured output."
 )
 
 _SYSTEM_ANALYZE = (
-    "You are a data analyst. Given a question, the SQL run, and the result set, "
-    "provide a clear answer in plain English. Score confidence: start at 50, "
-    "+20 if metric in KPI catalog, +20 if T1 source (+10 if T2), "
-    "+20 if SQL follows catalog pattern, +15 for live data, +15 for direct lookup. "
-    "Cap at the metric's confidence_ceiling from the KPI catalog."
+    "You are a data analyst. Answer the question based on the SQL result using this exact structure:\n"
+    "1. One sentence stating the key figure and what it means.\n"
+    "2. A markdown table of the result data. If the result is empty or null, write "
+    "'No data available for this period' and explain the likely reason (e.g. the dataset "
+    "predates the requested date range).\n"
+    "3. Confidence: [score]% — [one-line justification].\n\n"
+    "Confidence: start at 50. +20 if metric is in the KPI catalog. +20 if T1 source, "
+    "+10 if T2. +20 if SQL matches the catalog pattern. +15 if result has data rows. "
+    "-30 if result is empty or null. Cap at the metric's confidence_ceiling. "
+    "Never score above 60 for an empty or null result."
 )
 
 
@@ -57,7 +63,7 @@ class DataQueriesSkill(SkillBase):
             f"Schema:\n{context.get('schema', '')}"
             f"{domain_section}"
         )
-        return query_structured(_SYSTEM_SQL, user, SQLGenerationResult, model=self.model, max_tokens=512)
+        return query_structured(_SYSTEM_SQL, user, SQLGenerationResult, model=self.model, max_tokens=4096)
 
     def _analyze(self, question: str, sql_result: SQLGenerationResult, rows: list[dict], context: dict) -> AnalysisResult:
         user = (
@@ -67,7 +73,7 @@ class DataQueriesSkill(SkillBase):
             f"Result (first 20 rows):\n{rows[:20]}\n\n"
             f"KPI Index:\n{context.get('kpis_index', '')}"
         )
-        return query_structured(_SYSTEM_ANALYZE, user, AnalysisResult, model=self.model, max_tokens=512)
+        return query_structured(_SYSTEM_ANALYZE, user, AnalysisResult, model=self.model, max_tokens=4096)
 
 
 def _sql_from_saved(saved_content: str) -> SQLGenerationResult:

@@ -1,0 +1,994 @@
+# Semantic Layer - LLM Analytics Guide
+# This file provides comprehensive metadata for LLM-powered analytics
+
+version: 2.0
+project: tpch
+generated_at: 2026-05-14T18:05:28.273575
+database_type: PostgreSQL
+
+# =============================================================================
+# BUSINESS CONTEXT
+# =============================================================================
+business_context:
+  industry: wholesale_distribution
+  description: Generated dbt project for wholesale_distribution analytics
+  primary_use_cases:
+
+    - optimize_inventory_levels
+
+    - increase_sales_volume
+
+    - improve_order_fulfillment
+
+
+# =============================================================================
+# DATA MODEL OVERVIEW
+# =============================================================================
+architecture:
+  pattern: Medallion (Bronze → Silver → Gold)
+  approach: Kimball dimensional modeling
+  
+layers:
+  bronze:
+    description: Raw data passthrough from source systems
+    materialization: view
+    purpose: Exact replica of source data for auditing and reprocessing
+    query_usage: Rarely queried directly; use for data exploration only
+    
+  silver:
+    description: Cleaned dimensional models (facts and dimensions)
+    materialization: table
+    purpose: Structured star schema for flexible analytical queries
+    query_usage: Use for detailed analysis requiring granular data
+    
+  gold:
+    description: Pre-aggregated metrics optimized for performance
+    materialization: table
+    purpose: Fast dashboards and common reporting use cases
+    query_usage: Primary layer for analytics - always check Gold first
+
+# =============================================================================
+# METRICS CATALOG
+# =============================================================================
+metrics:
+
+  - name: agg_daily_lineitem_quantity
+    display_name: "Daily aggregates for line items by part and supplier"
+    layer: gold
+    grain: daily
+    source_fact: fct_lineitem
+    refresh_frequency: "Depends on dbt schedule (typically daily)"
+    
+    measures:
+
+      - name: total_quantity
+        aggregation: SUM
+        source_column: l_quantity
+        data_type: "NUMERIC"
+        description: Sum of line quantities per day
+        sql_formula: "SUM(l_quantity)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze total_quantity trends"
+          - "Compare across time periods"
+
+        example_queries:
+          - description: "Get total_quantity for last 30 days"
+            sql: "SELECT daily_date, total_quantity FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare total_quantity month-over-month"
+            sql: "SELECT daily_date, total_quantity, LAG(total_quantity) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: avg_quantity
+        aggregation: AVG
+        source_column: l_quantity
+        data_type: "NUMERIC"
+        description: Average line quantity per day
+        sql_formula: "AVG(l_quantity)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze average values by daily"
+          - "Track changes in average metrics over time"
+          - "Benchmark against targets"
+
+        example_queries:
+          - description: "Get avg_quantity for last 30 days"
+            sql: "SELECT daily_date, avg_quantity FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare avg_quantity month-over-month"
+            sql: "SELECT daily_date, avg_quantity, LAG(avg_quantity) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: min_quantity
+        aggregation: MIN
+        source_column: l_quantity
+        data_type: "NUMERIC"
+        description: Minimum line quantity per day
+        sql_formula: "MIN(l_quantity)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze min_quantity trends"
+          - "Compare across time periods"
+
+        example_queries:
+          - description: "Get min_quantity for last 30 days"
+            sql: "SELECT daily_date, min_quantity FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare min_quantity month-over-month"
+            sql: "SELECT daily_date, min_quantity, LAG(min_quantity) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: max_quantity
+        aggregation: MAX
+        source_column: l_quantity
+        data_type: "NUMERIC"
+        description: Maximum line quantity per day
+        sql_formula: "MAX(l_quantity)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze max_quantity trends"
+          - "Compare across time periods"
+
+        example_queries:
+          - description: "Get max_quantity for last 30 days"
+            sql: "SELECT daily_date, max_quantity FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare max_quantity month-over-month"
+            sql: "SELECT daily_date, max_quantity, LAG(max_quantity) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: line_count
+        aggregation: COUNT
+        source_column: l_quantity
+        data_type: "INTEGER"
+        description: Count of line items per day
+        sql_formula: "COUNT(*)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor daily activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get line_count for last 30 days"
+            sql: "SELECT daily_date, line_count FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare line_count month-over-month"
+            sql: "SELECT daily_date, line_count, LAG(line_count) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: distinct_part_count
+        aggregation: COUNT_DISTINCT
+        source_column: l_partkey
+        data_type: "NUMERIC"
+        description: Distinct part keys per day
+        sql_formula: "COUNT_DISTINCT(l_partkey)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor daily activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get distinct_part_count for last 30 days"
+            sql: "SELECT daily_date, distinct_part_count FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare distinct_part_count month-over-month"
+            sql: "SELECT daily_date, distinct_part_count, LAG(distinct_part_count) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+      - name: distinct_supp_count
+        aggregation: COUNT_DISTINCT
+        source_column: l_suppkey
+        data_type: "NUMERIC"
+        description: Distinct supplier keys per day
+        sql_formula: "COUNT_DISTINCT(l_suppkey)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor daily activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get distinct_supp_count for last 30 days"
+            sql: "SELECT daily_date, distinct_supp_count FROM agg_daily_lineitem_quantity WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare distinct_supp_count month-over-month"
+            sql: "SELECT daily_date, distinct_supp_count, LAG(distinct_supp_count) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_lineitem_quantity"
+
+    
+    time_column: l_shipdate
+    dimensions:
+      - "time (daily)"
+    
+    common_filters:
+      - "WHERE daily_date >= CURRENT_DATE - INTERVAL '30 days'"
+      - "WHERE daily_date BETWEEN '[start_date]' AND '[end_date]'"
+      - "WHERE EXTRACT(YEAR FROM daily_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    
+
+  - name: agg_monthly_lineitem_revenue
+    display_name: "Monthly aggregates for line items by part and supplier"
+    layer: gold
+    grain: monthly
+    source_fact: fct_lineitem
+    refresh_frequency: "Depends on dbt schedule (typically daily)"
+    
+    measures:
+
+      - name: total_revenue
+        aggregation: SUM
+        source_column: line_total
+        data_type: "NUMERIC"
+        description: Sum of line totals per month
+        sql_formula: "SUM(line_total)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Track total revenue by monthly"
+          - "Calculate revenue growth rates"
+          - "Compare revenue across time periods"
+
+        example_queries:
+          - description: "Get total_revenue for last 30 days"
+            sql: "SELECT monthly_date, total_revenue FROM agg_monthly_lineitem_revenue WHERE monthly_date >= CURRENT_DATE - 30 ORDER BY monthly_date"
+          - description: "Compare total_revenue month-over-month"
+            sql: "SELECT monthly_date, total_revenue, LAG(total_revenue) OVER (ORDER BY monthly_date) as previous_period FROM agg_monthly_lineitem_revenue"
+
+      - name: net_revenue
+        aggregation: SUM
+        source_column: net_revenue
+        data_type: "NUMERIC"
+        description: Sum of net revenue per month
+        sql_formula: "SUM(net_revenue)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Track total revenue by monthly"
+          - "Calculate revenue growth rates"
+          - "Compare revenue across time periods"
+
+        example_queries:
+          - description: "Get net_revenue for last 30 days"
+            sql: "SELECT monthly_date, net_revenue FROM agg_monthly_lineitem_revenue WHERE monthly_date >= CURRENT_DATE - 30 ORDER BY monthly_date"
+          - description: "Compare net_revenue month-over-month"
+            sql: "SELECT monthly_date, net_revenue, LAG(net_revenue) OVER (ORDER BY monthly_date) as previous_period FROM agg_monthly_lineitem_revenue"
+
+      - name: order_count
+        aggregation: COUNT
+        source_column: l_quantity
+        data_type: "INTEGER"
+        description: Count of line items per month
+        sql_formula: "COUNT(*)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor monthly activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get order_count for last 30 days"
+            sql: "SELECT monthly_date, order_count FROM agg_monthly_lineitem_revenue WHERE monthly_date >= CURRENT_DATE - 30 ORDER BY monthly_date"
+          - description: "Compare order_count month-over-month"
+            sql: "SELECT monthly_date, order_count, LAG(order_count) OVER (ORDER BY monthly_date) as previous_period FROM agg_monthly_lineitem_revenue"
+
+      - name: avg_discount
+        aggregation: AVG
+        source_column: l_discount
+        data_type: "NUMERIC"
+        description: Average discount percentage per month
+        sql_formula: "AVG(l_discount)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor monthly activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get avg_discount for last 30 days"
+            sql: "SELECT monthly_date, avg_discount FROM agg_monthly_lineitem_revenue WHERE monthly_date >= CURRENT_DATE - 30 ORDER BY monthly_date"
+          - description: "Compare avg_discount month-over-month"
+            sql: "SELECT monthly_date, avg_discount, LAG(avg_discount) OVER (ORDER BY monthly_date) as previous_period FROM agg_monthly_lineitem_revenue"
+
+    
+    time_column: l_shipdate
+    dimensions:
+      - "time (monthly)"
+    
+    common_filters:
+      - "WHERE monthly_date >= CURRENT_DATE - INTERVAL '30 days'"
+      - "WHERE monthly_date BETWEEN '[start_date]' AND '[end_date]'"
+      - "WHERE EXTRACT(YEAR FROM monthly_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    
+
+  - name: agg_daily_orders_totalprice
+    display_name: "Daily aggregates for orders by customer"
+    layer: gold
+    grain: daily
+    source_fact: fct_orders
+    refresh_frequency: "Depends on dbt schedule (typically daily)"
+    
+    measures:
+
+      - name: total_price
+        aggregation: SUM
+        source_column: o_totalprice
+        data_type: "NUMERIC"
+        description: Sum of order total prices per day
+        sql_formula: "SUM(o_totalprice)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze total_price trends"
+          - "Compare across time periods"
+
+        example_queries:
+          - description: "Get total_price for last 30 days"
+            sql: "SELECT daily_date, total_price FROM agg_daily_orders_totalprice WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare total_price month-over-month"
+            sql: "SELECT daily_date, total_price, LAG(total_price) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_orders_totalprice"
+
+      - name: order_count
+        aggregation: COUNT
+        source_column: o_totalprice
+        data_type: "INTEGER"
+        description: Count of orders per day
+        sql_formula: "COUNT(*)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Monitor daily activity volume"
+          - "Track growth in transaction count"
+          - "Calculate conversion rates"
+
+        example_queries:
+          - description: "Get order_count for last 30 days"
+            sql: "SELECT daily_date, order_count FROM agg_daily_orders_totalprice WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare order_count month-over-month"
+            sql: "SELECT daily_date, order_count, LAG(order_count) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_orders_totalprice"
+
+      - name: avg_order_price
+        aggregation: AVG
+        source_column: o_totalprice
+        data_type: "NUMERIC"
+        description: Average order price per day
+        sql_formula: "AVG(o_totalprice)"
+        null_handling: "NULLs are excluded from aggregations"
+        use_cases:
+
+          - "Analyze average values by daily"
+          - "Track changes in average metrics over time"
+          - "Benchmark against targets"
+
+        example_queries:
+          - description: "Get avg_order_price for last 30 days"
+            sql: "SELECT daily_date, avg_order_price FROM agg_daily_orders_totalprice WHERE daily_date >= CURRENT_DATE - 30 ORDER BY daily_date"
+          - description: "Compare avg_order_price month-over-month"
+            sql: "SELECT daily_date, avg_order_price, LAG(avg_order_price) OVER (ORDER BY daily_date) as previous_period FROM agg_daily_orders_totalprice"
+
+    
+    time_column: o_orderdate
+    dimensions:
+      - "time (daily)"
+    
+    common_filters:
+      - "WHERE daily_date >= CURRENT_DATE - INTERVAL '30 days'"
+      - "WHERE daily_date BETWEEN '[start_date]' AND '[end_date]'"
+      - "WHERE EXTRACT(YEAR FROM daily_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    
+
+
+# =============================================================================
+# DIMENSIONAL MODEL
+# =============================================================================
+
+## Dimensions (Descriptive Attributes)
+dimensions:
+
+  - name: dim_customer
+    display_name: "Customer"
+    source_table: customer
+    type: SCD2
+    grain: customer
+    description: Historical tracking enabled - captures changes over time
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: customer_id
+    
+
+    scd_columns:
+      - valid_from: "Start date of this record version"
+      - valid_to: "End date of this record version (NULL if current)"
+      - is_current: "Boolean flag indicating current record"
+    
+    usage_notes:
+      - "Always filter on is_current = TRUE for point-in-time queries"
+      - "Join on surrogate key (dim_customer_sk) not natural key"
+      - "For historical analysis, use valid_from/valid_to range"
+
+    
+    common_attributes:
+
+      - c_custkey
+
+      - c_name
+
+      - c_address
+
+      - c_nationkey
+
+      - c_phone
+
+    
+    typical_use_cases:
+      - "Filter data by customer attributes"
+      - "Group metrics by customer categories"
+      - "Join to facts for detailed analysis"
+    
+
+  - name: dim_nation
+    display_name: "Nation"
+    source_table: nation
+    type: SCD1
+    grain: nation
+    description: Current state only - overwrites on change
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: nation_id
+    
+
+    
+    common_attributes:
+
+      - n_nationkey
+
+      - n_name
+
+      - n_regionkey
+
+      - n_comment
+
+    
+    typical_use_cases:
+      - "Filter data by nation attributes"
+      - "Group metrics by nation categories"
+      - "Join to facts for detailed analysis"
+    
+
+  - name: dim_part
+    display_name: "Part"
+    source_table: part
+    type: SCD1
+    grain: part
+    description: Current state only - overwrites on change
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: part_id
+    
+
+    
+    common_attributes:
+
+      - p_partkey
+
+      - p_name
+
+      - p_mfgr
+
+      - p_brand
+
+      - p_type
+
+    
+    typical_use_cases:
+      - "Filter data by part attributes"
+      - "Group metrics by part categories"
+      - "Join to facts for detailed analysis"
+    
+
+  - name: dim_partsupp
+    display_name: "Partsupp"
+    source_table: partsupp
+    type: SCD1
+    grain: partsupp
+    description: Current state only - overwrites on change
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: partsupp_id
+    
+
+    
+    common_attributes:
+
+      - ps_partkey
+
+      - ps_suppkey
+
+      - ps_availqty
+
+      - ps_supplycost
+
+      - ps_comment
+
+    
+    typical_use_cases:
+      - "Filter data by partsupp attributes"
+      - "Group metrics by partsupp categories"
+      - "Join to facts for detailed analysis"
+    
+
+  - name: dim_region
+    display_name: "Region"
+    source_table: region
+    type: SCD1
+    grain: region
+    description: Current state only - overwrites on change
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: region_id
+    
+
+    
+    common_attributes:
+
+      - r_regionkey
+
+      - r_name
+
+      - r_comment
+
+    
+    typical_use_cases:
+      - "Filter data by region attributes"
+      - "Group metrics by region categories"
+      - "Join to facts for detailed analysis"
+    
+
+  - name: dim_supplier
+    display_name: "Supplier"
+    source_table: supplier
+    type: SCD2
+    grain: supplier
+    description: Historical tracking enabled - captures changes over time
+    role: "Provides context and attributes for filtering and grouping"
+    
+    key_column: supplier_id
+    
+
+    scd_columns:
+      - valid_from: "Start date of this record version"
+      - valid_to: "End date of this record version (NULL if current)"
+      - is_current: "Boolean flag indicating current record"
+    
+    usage_notes:
+      - "Always filter on is_current = TRUE for point-in-time queries"
+      - "Join on surrogate key (dim_supplier_sk) not natural key"
+      - "For historical analysis, use valid_from/valid_to range"
+
+    
+    common_attributes:
+
+      - s_suppkey
+
+      - s_name
+
+      - s_address
+
+      - s_nationkey
+
+      - s_phone
+
+    
+    typical_use_cases:
+      - "Filter data by supplier attributes"
+      - "Group metrics by supplier categories"
+      - "Join to facts for detailed analysis"
+    
+
+
+## Facts (Measurable Events)
+facts:
+
+  - name: fct_lineitem
+    display_name: "Lineitem"
+    source_table: lineitem
+    grain: one row per line item
+    description: "Transactional data capturing measurable events"
+    
+    date_column: l_shipdate
+    date_description: "Primary date for time-based analysis"
+    
+    measures:
+
+      - name: l_quantity
+        type: "Numeric - can be aggregated"
+        typical_aggregations: [SUM, AVG, MIN, MAX, COUNT]
+
+      - name: l_extendedprice
+        type: "Numeric - can be aggregated"
+        typical_aggregations: [SUM, AVG, MIN, MAX, COUNT]
+
+      - name: l_discount
+        type: "Numeric - can be aggregated"
+        typical_aggregations: [SUM, AVG, MIN, MAX, COUNT]
+
+      - name: l_tax
+        type: "Numeric - can be aggregated"
+        typical_aggregations: [SUM, AVG, MIN, MAX, COUNT]
+
+
+      - name: line_total
+        type: "Derived - computed as: l_extendedprice * (1 - l_discount)"
+        typical_aggregations: [SUM, AVG, MIN, MAX]
+
+      - name: net_revenue
+        type: "Derived - computed as: l_extendedprice * (1 - l_discount) * (1 - l_tax)"
+        typical_aggregations: [SUM, AVG, MIN, MAX]
+
+
+    dimension_keys:
+
+      - l_orderkey
+
+      - l_partkey
+
+      - l_suppkey
+
+
+
+    relationships:
+
+
+
+
+
+
+
+
+
+
+    
+    typical_use_cases:
+      - "Detailed transaction-level analysis"
+      - "Calculate custom metrics not available in Gold"
+      - "Drill down from Gold aggregates"
+    
+    join_pattern: |
+      SELECT 
+        f.*,
+
+        d_1.attribute_name
+
+        d_2.attribute_name
+
+        d_3.attribute_name
+
+      FROM fct_lineitem f
+
+
+
+
+
+
+
+
+
+
+      WHERE f.l_shipdate >= CURRENT_DATE - 30
+
+
+  - name: fct_orders
+    display_name: "Orders"
+    source_table: orders
+    grain: one row per order
+    description: "Transactional data capturing measurable events"
+    
+    date_column: o_orderdate
+    date_description: "Primary date for time-based analysis"
+    
+    measures:
+
+      - name: o_totalprice
+        type: "Numeric - can be aggregated"
+        typical_aggregations: [SUM, AVG, MIN, MAX, COUNT]
+
+
+
+    dimension_keys:
+
+      - o_orderkey
+
+      - o_custkey
+
+
+
+    relationships:
+
+
+
+
+
+
+
+    
+    typical_use_cases:
+      - "Detailed transaction-level analysis"
+      - "Calculate custom metrics not available in Gold"
+      - "Drill down from Gold aggregates"
+    
+    join_pattern: |
+      SELECT 
+        f.*,
+
+        d_1.attribute_name
+
+        d_2.attribute_name
+
+      FROM fct_orders f
+
+
+
+
+
+
+
+      WHERE f.o_orderdate >= CURRENT_DATE - 30
+
+
+
+# =============================================================================
+# RELATIONSHIPS & JOIN PATHS
+# =============================================================================
+relationships:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+join_paths:
+  - path_name: "fact_to_all_dimensions"
+    description: "Standard star schema join pattern"
+    example: |
+      SELECT 
+        f.*,
+        d1.*,
+        d2.*
+      FROM fct_lineitem f
+      LEFT JOIN dim_table1 d1 ON f.key1 = d1.key1
+      LEFT JOIN dim_table2 d2 ON f.key2 = d2.key2
+
+# =============================================================================
+# BUSINESS GLOSSARY
+# =============================================================================
+glossary:
+
+  l_shipdate: "Primary timestamp for lineitem - use for time-based filtering and grouping"
+
+  o_orderdate: "Primary timestamp for orders - use for time-based filtering and grouping"
+
+
+
+
+  daily_grain: "Data aggregated at daily level - one row per daily"
+
+
+
+
+  monthly_grain: "Data aggregated at monthly level - one row per monthly"
+
+
+
+
+
+  
+common_terms:
+  grain: "The level of detail - daily grain means one row per day"
+  fact: "A measurable business event (orders, transactions, clicks)"
+  dimension: "Descriptive attributes (customer name, product category)"
+  measure: "Numeric value that can be aggregated (quantity, amount)"
+  surrogate_key: "System-generated unique identifier (ends in _sk)"
+  natural_key: "Business identifier (ends in _id)"
+
+# =============================================================================
+# QUERY GUIDELINES FOR LLMs
+# =============================================================================
+llm_query_guidelines:
+  
+  query_strategy:
+    - "ALWAYS start with Gold layer if the metric exists"
+    - "Use Silver (facts + dimensions) only when Gold doesn't have the metric"
+    - "Avoid Bronze layer unless exploring raw source data"
+    - "Gold is 10-100x faster than Silver for common queries"
+  
+  performance_tips:
+    - "Filter on date columns first (indexed)"
+    - "Use Gold models for dashboards and reporting"
+    - "Join facts to dimensions, never dimension to dimension"
+    - "Limit result sets with TOP/LIMIT when exploring"
+  
+  common_mistakes:
+    - mistake: "Querying Bronze for analytics"
+      solution: "Use Silver or Gold instead"
+    - mistake: "Joining dimensions to each other"
+      solution: "Always join through a fact table"
+    - mistake: "Not filtering by date on large fact tables"
+      solution: "Always include date filter on time-series data"
+    - mistake: "Using SELECT * on fact tables"
+      solution: "Specify only needed columns"
+  
+  date_handling:
+    - "All date columns are in YYYY-MM-DD format"
+    - "Use CURRENT_DATE for today"
+    - "Use date_trunc('month', date_column) for monthly aggregations"
+    - "Use INTERVAL '30 days' for relative date math"
+  
+  null_handling:
+    - "LEFT JOIN preserves all fact records even if dimension is missing"
+    - "Aggregations (SUM, AVG, COUNT) ignore NULL values"
+    - "Use COALESCE(column, 0) to convert NULL to zero"
+
+# =============================================================================
+# QUERY LIBRARY (Common Analytical Questions)
+# =============================================================================
+query_library:
+
+  
+  - category: "Daily Analysis"
+    queries:
+      - question: "What is the total_quantity for the last 30 days?"
+        sql: |
+          SELECT 
+            daily_date,
+            total_quantity
+          FROM agg_daily_lineitem_quantity
+          WHERE daily_date >= CURRENT_DATE - 30
+          ORDER BY daily_date DESC
+        
+      - question: "How does daily performance compare to previous period?"
+        sql: |
+          SELECT 
+            daily_date,
+            total_quantity,
+            LAG(total_quantity) OVER (
+              ORDER BY daily_date
+            ) as previous_daily,
+            total_quantity - LAG(total_quantity) OVER (
+              ORDER BY daily_date
+            ) as change
+          FROM agg_daily_lineitem_quantity
+          WHERE daily_date >= CURRENT_DATE - 60
+          ORDER BY daily_date DESC
+
+  
+  - category: "Monthly Analysis"
+    queries:
+      - question: "What is the total_revenue for the last 30 days?"
+        sql: |
+          SELECT 
+            monthly_date,
+            total_revenue
+          FROM agg_monthly_lineitem_revenue
+          WHERE monthly_date >= CURRENT_DATE - 30
+          ORDER BY monthly_date DESC
+        
+      - question: "How does monthly performance compare to previous period?"
+        sql: |
+          SELECT 
+            monthly_date,
+            total_revenue,
+            LAG(total_revenue) OVER (
+              ORDER BY monthly_date
+            ) as previous_monthly,
+            total_revenue - LAG(total_revenue) OVER (
+              ORDER BY monthly_date
+            ) as change
+          FROM agg_monthly_lineitem_revenue
+          WHERE monthly_date >= CURRENT_DATE - 60
+          ORDER BY monthly_date DESC
+
+  
+  - category: "Daily Analysis"
+    queries:
+      - question: "What is the total_price for the last 30 days?"
+        sql: |
+          SELECT 
+            daily_date,
+            total_price
+          FROM agg_daily_orders_totalprice
+          WHERE daily_date >= CURRENT_DATE - 30
+          ORDER BY daily_date DESC
+        
+      - question: "How does daily performance compare to previous period?"
+        sql: |
+          SELECT 
+            daily_date,
+            total_price,
+            LAG(total_price) OVER (
+              ORDER BY daily_date
+            ) as previous_daily,
+            total_price - LAG(total_price) OVER (
+              ORDER BY daily_date
+            ) as change
+          FROM agg_daily_orders_totalprice
+          WHERE daily_date >= CURRENT_DATE - 60
+          ORDER BY daily_date DESC
+
+
+  - category: "Cross-Fact Analysis"
+    queries:
+      - question: "Combine multiple facts for comprehensive analysis"
+        sql: |
+          -- Example: Join multiple fact tables through shared dimensions
+          SELECT 
+            d.dimension_attribute,
+            f1.measure1,
+            f2.measure2
+          FROM fct_lineitem f1
+          INNER JOIN dim_customer d 
+            ON f1.l_orderkey = d.l_orderkey
+          LEFT JOIN fct_orders f2 
+            ON d.l_orderkey = f2.l_orderkey
+
+# =============================================================================
+# DATA QUALITY & LIMITATIONS
+# =============================================================================
+data_quality:
+  refresh_schedule: "Typically daily via dbt runs"
+  
+  known_limitations:
+    - "Historical data only available from 2026-05-14"
+    - "SCD Type 2 dimensions track changes, but not all dimensions are slowly changing"
+    - "Gold layer aggregations are pre-computed and may not reflect real-time data"
+  
+  null_handling_rules:
+    - "Foreign keys may be NULL if dimension record doesn't exist"
+    - "Measures are NULL if not applicable to the record"
+    - "Date columns should never be NULL in fact tables"
+  
+  best_practices:
+    - "Always filter fact tables by date to improve performance"
+    - "Use Gold layer for standard reporting metrics"
+    - "Use Silver layer when custom calculations are needed"
+    - "Validate results by checking row counts and aggregations"
+
+# =============================================================================
+# QUICK REFERENCE
+# =============================================================================
+quick_reference:
+  
+  table_naming:
+    bronze: "bronze_[source_table]"
+    silver_facts: "fct_[entity]"
+    silver_dimensions: "dim_[entity]"
+    gold: "gold_[grain]_[metric_type]"
+  
+  column_naming:
+    surrogate_keys: "[table]_sk (system-generated unique ID)"
+    natural_keys: "[entity]_id (business identifier)"
+    date_columns: "[event]_date or [grain]_date"
+    measures: "Descriptive names like total_amount, quantity, etc."
+  
+  typical_workflow:
+    1: "Identify the business question"
+    2: "Check if Gold layer has the metric → use Gold"
+    3: "If not in Gold, query Silver facts + dimensions"
+    4: "Filter by date range to limit data"
+    5: "Join dimensions only as needed"
+    6: "Validate results make business sense"
+
+---
+# End of Semantic Layer
+# For questions or issues, refer to dbt project documentation

@@ -5,7 +5,7 @@ from pathlib import Path
 from conan.models import KnowledgeBase, KPIEntry, SourceTier
 
 
-def write_kb(kb: KnowledgeBase, output_path: Path) -> None:
+def write_kb(kb: KnowledgeBase, output_path: Path, connection: str | None = None) -> None:
     output_path = Path(output_path)
     output_path.mkdir(parents=True, exist_ok=True)
     (output_path / "schema").mkdir(exist_ok=True)
@@ -15,7 +15,7 @@ def write_kb(kb: KnowledgeBase, output_path: Path) -> None:
     _write_kpis_index(kb, output_path)
     _write_domain_files(kb, output_path)
     _write_source_priority(kb, output_path)
-    _write_schema_tables(kb, output_path)
+    _write_schema_tables(kb, output_path, connection)
     _init_queries_index(output_path)
 
 
@@ -75,18 +75,45 @@ def _write_source_priority(kb: KnowledgeBase, path: Path) -> None:
     (path / "source_priority.md").write_text(content)
 
 
-def _write_schema_tables(kb: KnowledgeBase, path: Path) -> None:
-    rows = [
-        f"| {s.table_name} | {s.tier.value} | {s.description} |"
-        for s in kb.sources
-    ]
-    content = (
-        "# Schema Tables\n\n"
-        "| Table | Tier | Description |\n"
-        "|---|---|---|\n"
-        + "\n".join(rows) + "\n"
-    )
-    (path / "schema" / "tables.md").write_text(content)
+def _write_schema_tables(kb: KnowledgeBase, path: Path, connection: str | None = None) -> None:
+    live_columns: dict[str, list[tuple[str, str]]] = {}
+    if connection:
+        live_columns = _fetch_columns(connection, [s.table_name for s in kb.sources])
+
+    lines = ["# Schema Tables\n"]
+    for s in kb.sources:
+        lines.append(f"\n## {s.table_name} ({s.tier.value})\n")
+        if s.description:
+            lines.append(f"{s.description}\n")
+        cols = live_columns.get(s.table_name, [])
+        if cols:
+            lines.append("\n| Column | Type |\n|---|---|\n")
+            for col_name, col_type in cols:
+                lines.append(f"| {col_name} | {col_type} |\n")
+
+    (path / "schema" / "tables.md").write_text("".join(lines))
+
+
+def _fetch_columns(connection: str, table_names: list[str]) -> dict[str, list[tuple[str, str]]]:
+    import re
+    result: dict[str, list[tuple[str, str]]] = {}
+    if not connection.startswith("duckdb://"):
+        return result
+    try:
+        import duckdb
+        match = re.match(r"duckdb:///(.*)$", connection)
+        db_path = match.group(1) if match else ":memory:"
+        conn = duckdb.connect(db_path)
+        target = set(table_names)
+        for (table,) in conn.execute("SELECT table_name FROM duckdb_tables()").fetchall():
+            if table not in target:
+                continue
+            cols = conn.execute(f"PRAGMA table_info('{table}')").fetchall()
+            result[table] = [(row[1], row[2]) for row in cols]
+        conn.close()
+    except Exception:
+        pass
+    return result
 
 
 def _init_queries_index(path: Path) -> None:

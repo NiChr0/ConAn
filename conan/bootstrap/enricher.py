@@ -19,7 +19,7 @@ Given KPI stubs and the original semantic layer context, validate and improve th
 Return structured changes for every metric ID provided."""
 
 
-def enrich_kb(kb: KnowledgeBase, project_path: Path) -> KnowledgeBase:
+def enrich_kb(kb: KnowledgeBase, project_path: Path, auto_apply: bool = False) -> KnowledgeBase:
     semantic_context = _read_semantic_context(project_path)
 
     domains: dict[str, list[KPIEntry]] = {}
@@ -37,7 +37,7 @@ def enrich_kb(kb: KnowledgeBase, project_path: Path) -> KnowledgeBase:
             all_gaps.extend(result.gaps)
 
     _print_summary(all_changes, all_gaps)
-    if not click.confirm("Apply these changes?", default=True):
+    if not auto_apply and not click.confirm("Apply these changes?", default=True):
         return kb
 
     changes_by_id = {c.metric_id: c for c in all_changes}

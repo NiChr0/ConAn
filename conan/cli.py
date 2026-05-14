@@ -20,7 +20,8 @@ def main():
 @click.option("-o", "--output", required=True, type=click.Path(),
               help="Output path for ConAn knowledge base")
 @click.option("--name", default=None, help="Project name (defaults to output directory name)")
-def bootstrap(project, connection, output, name):
+@click.option("--yes", "-y", is_flag=True, default=False, help="Skip confirmation prompts")
+def bootstrap(project, connection, output, name, yes):
     """Bootstrap ConAn knowledge base from a Schemalytics dbt project."""
     project_path = Path(project)
     output_path = Path(output)
@@ -31,10 +32,10 @@ def bootstrap(project, connection, output, name):
     click.echo(f"Mapped {len(kb.kpis)} metrics, {len(kb.sources)} tables.")
 
     click.echo("Running LLM enrichment pass...")
-    kb = enrich_kb(kb, project_path)
+    kb = enrich_kb(kb, project_path, auto_apply=yes)
 
     output_path.mkdir(parents=True, exist_ok=True)
-    write_kb(kb, output_path)
+    write_kb(kb, output_path, connection=connection)
     click.echo(f"Knowledge base written to {output_path}")
 
 
@@ -58,3 +59,9 @@ def chat(kb_path, connection):
         except (KeyboardInterrupt, click.exceptions.Abort):
             click.echo("\nBye.")
             break
+        except Exception as e:
+            click.echo(f"\nError: {e}", err=True)
+
+
+if __name__ == "__main__":
+    main()

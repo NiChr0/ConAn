@@ -1,0 +1,138 @@
+version: 2
+
+models:
+
+  - name: agg_daily_lineitem_quantity
+    description: "Daily aggregates for line items by part and supplier"
+    meta:
+      layer: gold
+      grain: daily
+      refresh: daily
+    columns:
+
+
+      - name: daily_date
+        description: "Date at daily grain"
+        tests:
+          - unique
+          - not_null
+
+
+      - name: total_quantity
+        description: "Sum of line quantities per day"
+        meta:
+          aggregation: SUM
+          source_column: l_quantity
+
+      - name: avg_quantity
+        description: "Average line quantity per day"
+        meta:
+          aggregation: AVG
+          source_column: l_quantity
+
+      - name: min_quantity
+        description: "Minimum line quantity per day"
+        meta:
+          aggregation: MIN
+          source_column: l_quantity
+
+      - name: max_quantity
+        description: "Maximum line quantity per day"
+        meta:
+          aggregation: MAX
+          source_column: l_quantity
+
+      - name: line_count
+        description: "Count of line items per day"
+        meta:
+          aggregation: COUNT
+          source_column: l_quantity
+
+      - name: distinct_part_count
+        description: "Distinct part keys per day"
+        meta:
+          aggregation: COUNT_DISTINCT
+          source_column: l_partkey
+
+      - name: distinct_supp_count
+        description: "Distinct supplier keys per day"
+        meta:
+          aggregation: COUNT_DISTINCT
+          source_column: l_suppkey
+
+
+  - name: agg_monthly_lineitem_revenue
+    description: "Monthly aggregates for line items by part and supplier"
+    meta:
+      layer: gold
+      grain: monthly
+      refresh: daily
+    columns:
+
+
+      - name: monthly_date
+        description: "Date at monthly grain"
+        tests:
+          - unique
+          - not_null
+
+
+      - name: total_revenue
+        description: "Sum of line totals per month"
+        meta:
+          aggregation: SUM
+          source_column: line_total
+
+      - name: net_revenue
+        description: "Sum of net revenue per month"
+        meta:
+          aggregation: SUM
+          source_column: net_revenue
+
+      - name: order_count
+        description: "Count of line items per month"
+        meta:
+          aggregation: COUNT
+          source_column: l_quantity
+
+      - name: avg_discount
+        description: "Average discount percentage per month"
+        meta:
+          aggregation: AVG
+          source_column: l_discount
+
+
+  - name: agg_daily_orders_totalprice
+    description: "Daily aggregates for orders by customer"
+    meta:
+      layer: gold
+      grain: daily
+      refresh: daily
+    columns:
+
+
+      - name: daily_date
+        description: "Date at daily grain"
+        tests:
+          - unique
+          - not_null
+
+
+      - name: total_price
+        description: "Sum of order total prices per day"
+        meta:
+          aggregation: SUM
+          source_column: o_totalprice
+
+      - name: order_count
+        description: "Count of orders per day"
+        meta:
+          aggregation: COUNT
+          source_column: o_totalprice
+
+      - name: avg_order_price
+        description: "Average order price per day"
+        meta:
+          aggregation: AVG
+          source_column: o_totalprice
+

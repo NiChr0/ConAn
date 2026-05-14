@@ -1,0 +1,6 @@
+tpch:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /Users/nchronaios/Documents/Github/conan/tpch.duckdb

@@ -25,7 +25,7 @@ dependencies = [
 dev = ["pytest>=8.0", "pytest-mock>=3.0"]
 
 [project.scripts]
-conan = "conan.cli:main"
+conan-chat = "conan.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["conan"]

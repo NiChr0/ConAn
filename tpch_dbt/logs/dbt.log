@@ -1,0 +1,1269 @@
+[0m19:08:56.746477 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b46a270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c5139d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c513b10>]}
+
+
+============================== 19:08:56.765705 | 70811478-8c96-4f4f-808b-d479dffa8750 ==============================
+[0m19:08:56.765705 [info ] [MainThread]: Running with dbt=1.11.10
+[0m19:08:56.765963 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'introspect': 'True', 'quiet': 'False', 'debug': 'False', 'profiles_dir': '.', 'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'fail_fast': 'False', 'invocation_command': 'dbt deps --profiles-dir .', 'no_print': 'None', 'empty': 'None', 'version_check': 'True', 'static_parser': 'True', 'write_json': 'True', 'use_colors': 'True', 'target_path': 'None', 'partial_parse': 'True', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'log_path': '/Users/nchronaios/Documents/Github/conan/tpch_dbt/logs', 'use_experimental_parser': 'False'}
+[0m19:08:56.819056 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '70811478-8c96-4f4f-808b-d479dffa8750', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b7f0050>]}
+[0m19:08:56.856087 [debug] [MainThread]: Set downloads directory='/var/folders/89/v2y7jkvx2m19gxc3vd5q17vr0000gn/T/dbt-downloads-99_haimd'
+[0m19:08:56.856365 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m19:08:57.051226 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m19:08:57.052075 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m19:08:57.141346 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m19:08:57.149698 [info ] [MainThread]: Updating lock file in file path: /Users/nchronaios/Documents/Github/conan/tpch_dbt/package-lock.yml
+[0m19:08:57.151428 [debug] [MainThread]: Set downloads directory='/var/folders/89/v2y7jkvx2m19gxc3vd5q17vr0000gn/T/dbt-downloads-lscqsx0o'
+[0m19:08:57.153168 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m19:08:57.554208 [info ] [MainThread]: Installed from version 1.3.0
+[0m19:08:57.554480 [info ] [MainThread]: Updated version available: 1.3.3
+[0m19:08:57.554677 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '70811478-8c96-4f4f-808b-d479dffa8750', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c417bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c64e030>]}
+[0m19:08:57.554850 [info ] [MainThread]: 
+[0m19:08:57.554975 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m19:08:57.555752 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.8413681, "process_in_blocks": "0", "process_kernel_time": 0.369326, "process_mem_max_rss": "150372352", "process_out_blocks": "0", "process_user_time": 1.556357}
+[0m19:08:57.555953 [debug] [MainThread]: Command `dbt deps` succeeded at 19:08:57.555912 after 0.84 seconds
+[0m19:08:57.556097 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c77c850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c56a6c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c56a5d0>]}
+[0m19:08:57.556232 [debug] [MainThread]: Flushing usage events
+[0m19:08:58.161913 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:09:05.720679 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1084c97f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1099a3750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1099a3b10>]}
+
+
+============================== 19:09:05.722846 | 2fa28090-1458-4334-a230-2373c2d25cd8 ==============================
+[0m19:09:05.722846 [info ] [MainThread]: Running with dbt=1.11.10
+[0m19:09:05.723089 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'write_json': 'True', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'version_check': 'True', 'no_print': 'None', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'quiet': 'False', 'warn_error': 'None', 'empty': 'False', 'profiles_dir': '.', 'partial_parse': 'True', 'indirect_selection': 'eager', 'debug': 'False', 'fail_fast': 'False', 'printer_width': '80', 'log_path': '/Users/nchronaios/Documents/Github/conan/tpch_dbt/logs', 'log_cache_events': 'False', 'invocation_command': 'dbt run --profiles-dir .', 'cache_selected_only': 'False', 'use_colors': 'True'}
+[0m19:09:06.462546 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108cb10f0>]}
+[0m19:09:06.485234 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109b656a0>]}
+[0m19:09:06.486999 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m19:09:06.533576 [debug] [MainThread]: checksum: 2f247960199844e016e6a527f21364251736722c6212f4b11e96849fe0fc9e96, vars: {}, profile: , target: , version: 1.11.10
+[0m19:09:06.534053 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m19:09:06.534216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109aef050>]}
+[0m19:09:07.275860 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a39f200>]}
+[0m19:09:07.325205 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nchronaios/Documents/Github/conan/tpch_dbt/target/manifest.json
+[0m19:09:07.326736 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nchronaios/Documents/Github/conan/tpch_dbt/target/semantic_manifest.json
+[0m19:09:07.344874 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a555c50>]}
+[0m19:09:07.345131 [info ] [MainThread]: Found 19 models, 2 snapshots, 29 data tests, 8 sources, 595 macros
+[0m19:09:07.345274 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a383d40>]}
+[0m19:09:07.346405 [info ] [MainThread]: 
+[0m19:09:07.346540 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m19:09:07.346637 [info ] [MainThread]: 
+[0m19:09:07.346817 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m19:09:07.348967 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_tpch'
+[0m19:09:07.412013 [debug] [ThreadPool]: Using duckdb connection "list_tpch"
+[0m19:09:07.412203 [debug] [ThreadPool]: On list_tpch: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "connection_name": "list_tpch"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"tpch"'
+    
+  
+  
+[0m19:09:07.412320 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:09:07.421809 [debug] [ThreadPool]: SQL status: OK in 0.009 seconds
+[0m19:09:07.422361 [debug] [ThreadPool]: On list_tpch: Close
+[0m19:09:07.422630 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_tpch, now create_tpch_main)
+[0m19:09:07.422796 [debug] [ThreadPool]: Creating schema "database: "tpch"
+schema: "main"
+"
+[0m19:09:07.425466 [debug] [ThreadPool]: Using duckdb connection "create_tpch_main"
+[0m19:09:07.425613 [debug] [ThreadPool]: On create_tpch_main: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "connection_name": "create_tpch_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='tpch'
+        and type='sqlite'
+    
+  
+[0m19:09:07.425719 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m19:09:07.426118 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.426617 [debug] [ThreadPool]: Using duckdb connection "create_tpch_main"
+[0m19:09:07.426723 [debug] [ThreadPool]: On create_tpch_main: BEGIN
+[0m19:09:07.426873 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.426964 [debug] [ThreadPool]: Using duckdb connection "create_tpch_main"
+[0m19:09:07.427055 [debug] [ThreadPool]: On create_tpch_main: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "connection_name": "create_tpch_main"} */
+
+    
+    
+        create schema if not exists "tpch"."main"
+    
+[0m19:09:07.427254 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.427657 [debug] [ThreadPool]: On create_tpch_main: COMMIT
+[0m19:09:07.427797 [debug] [ThreadPool]: Using duckdb connection "create_tpch_main"
+[0m19:09:07.427904 [debug] [ThreadPool]: On create_tpch_main: COMMIT
+[0m19:09:07.428065 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.428171 [debug] [ThreadPool]: On create_tpch_main: Close
+[0m19:09:07.429114 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_tpch_main, now list_tpch_main)
+[0m19:09:07.431695 [debug] [ThreadPool]: Using duckdb connection "list_tpch_main"
+[0m19:09:07.431841 [debug] [ThreadPool]: On list_tpch_main: BEGIN
+[0m19:09:07.431950 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m19:09:07.432170 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.432306 [debug] [ThreadPool]: Using duckdb connection "list_tpch_main"
+[0m19:09:07.432421 [debug] [ThreadPool]: On list_tpch_main: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "connection_name": "list_tpch_main"} */
+select
+      'tpch' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'tpch'
+  
+[0m19:09:07.434135 [debug] [ThreadPool]: SQL status: OK in 0.002 seconds
+[0m19:09:07.434711 [debug] [ThreadPool]: On list_tpch_main: ROLLBACK
+[0m19:09:07.435239 [debug] [ThreadPool]: Failed to rollback 'list_tpch_main'
+[0m19:09:07.435358 [debug] [ThreadPool]: On list_tpch_main: Close
+[0m19:09:07.435540 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_tpch_main, now list_tpch_snapshots)
+[0m19:09:07.436620 [debug] [ThreadPool]: Using duckdb connection "list_tpch_snapshots"
+[0m19:09:07.436752 [debug] [ThreadPool]: On list_tpch_snapshots: BEGIN
+[0m19:09:07.436860 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m19:09:07.437036 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m19:09:07.437126 [debug] [ThreadPool]: Using duckdb connection "list_tpch_snapshots"
+[0m19:09:07.437231 [debug] [ThreadPool]: On list_tpch_snapshots: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "connection_name": "list_tpch_snapshots"} */
+select
+      'tpch' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'snapshots'
+    and lower(table_catalog) = 'tpch'
+  
+[0m19:09:07.438047 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m19:09:07.438467 [debug] [ThreadPool]: On list_tpch_snapshots: ROLLBACK
+[0m19:09:07.438694 [debug] [ThreadPool]: Failed to rollback 'list_tpch_snapshots'
+[0m19:09:07.438800 [debug] [ThreadPool]: On list_tpch_snapshots: Close
+[0m19:09:07.439005 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a333dd0>]}
+[0m19:09:07.439196 [debug] [MainThread]: Using duckdb connection "master"
+[0m19:09:07.439293 [debug] [MainThread]: On master: BEGIN
+[0m19:09:07.439387 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m19:09:07.439543 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m19:09:07.439638 [debug] [MainThread]: On master: COMMIT
+[0m19:09:07.439743 [debug] [MainThread]: Using duckdb connection "master"
+[0m19:09:07.439829 [debug] [MainThread]: On master: COMMIT
+[0m19:09:07.439964 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m19:09:07.440053 [debug] [MainThread]: On master: Close
+[0m19:09:07.442349 [debug] [Thread-1 (]: Began running node model.tpch.dim_customer
+[0m19:09:07.442552 [info ] [Thread-1 (]: 1 of 19 START sql table model main.dim_customer ................................ [RUN]
+[0m19:09:07.442702 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_tpch_snapshots, now model.tpch.dim_customer)
+[0m19:09:07.442824 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_customer
+[0m19:09:07.445984 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_customer"
+[0m19:09:07.446502 [debug] [Thread-1 (]: Began executing node model.tpch.dim_customer
+[0m19:09:07.458080 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_customer"
+[0m19:09:07.458588 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_customer"
+[0m19:09:07.458720 [debug] [Thread-1 (]: On model.tpch.dim_customer: BEGIN
+[0m19:09:07.458836 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.459097 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.459216 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_customer"
+[0m19:09:07.459348 [debug] [Thread-1 (]: On model.tpch.dim_customer: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_customer"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_customer__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_customer (SCD Type 2)
+-- History tracked by snapshot: snap_customer
+-- Run `dbt snapshot` before `dbt run` to populate historical records.
+
+
+select
+    dbt_scd_id as dim_customer_sk,
+    c_custkey,
+    c_name,
+    c_address,
+    c_nationkey,
+    c_phone,
+    c_acctbal,
+    c_mktsegment,
+    c_comment,
+    dbt_valid_from as valid_from,
+    dbt_valid_to as valid_to,
+    (dbt_valid_to is null) as is_current
+from "tpch"."snapshots"."snap_customer"
+    );
+  
+  
+[0m19:09:07.460012 [debug] [Thread-1 (]: DuckDB adapter: duckdb error: Catalog Error: Table with name "snapshots.snap_customer" does not exist because schema "snapshots" does not exist.
+
+LINE 29: from "tpch"."snapshots"."snap_customer"
+              ^
+[0m19:09:07.460156 [debug] [Thread-1 (]: DuckDB adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_customer"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_customer__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_customer (SCD Type 2)
+-- History tracked by snapshot: snap_customer
+-- Run `dbt snapshot` before `dbt run` to populate historical records.
+
+
+select
+    dbt_scd_id as dim_customer_sk,
+    c_custkey,
+    c_name,
+    c_address,
+    c_nationkey,
+    c_phone,
+    c_acctbal,
+    c_mktsegment,
+    c_comment,
+    dbt_valid_from as valid_from,
+    dbt_valid_to as valid_to,
+    (dbt_valid_to is null) as is_current
+from "tpch"."snapshots"."snap_customer"
+    );
+  
+  
+[0m19:09:07.460282 [debug] [Thread-1 (]: DuckDB adapter: Rolling back transaction.
+[0m19:09:07.460391 [debug] [Thread-1 (]: On model.tpch.dim_customer: ROLLBACK
+[0m19:09:07.461267 [debug] [Thread-1 (]: Failed to rollback 'model.tpch.dim_customer'
+[0m19:09:07.461449 [debug] [Thread-1 (]: On model.tpch.dim_customer: Close
+[0m19:09:07.464595 [debug] [Thread-1 (]: Runtime Error in model dim_customer (models/silver/dimensions/dim_customer.sql)
+  Catalog Error: Table with name "snapshots.snap_customer" does not exist because schema "snapshots" does not exist.
+  
+  LINE 29: from "tpch"."snapshots"."snap_customer"
+                ^
+[0m19:09:07.467009 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a87ce10>]}
+[0m19:09:07.467291 [error] [Thread-1 (]: 1 of 19 ERROR creating sql table model main.dim_customer ....................... [[31mERROR[0m in 0.02s]
+[0m19:09:07.467508 [debug] [Thread-1 (]: Finished running node model.tpch.dim_customer
+[0m19:09:07.467659 [debug] [Thread-1 (]: Began running node model.tpch.dim_supplier
+[0m19:09:07.467830 [debug] [Thread-4 (]: Marking all children of 'model.tpch.dim_customer' to be skipped because of status 'error'.  Reason: Runtime Error in model dim_customer (models/silver/dimensions/dim_customer.sql)
+  Catalog Error: Table with name "snapshots.snap_customer" does not exist because schema "snapshots" does not exist.
+  
+  LINE 29: from "tpch"."snapshots"."snap_customer"
+                ^.
+[0m19:09:07.468004 [info ] [Thread-1 (]: 2 of 19 START sql table model main.dim_supplier ................................ [RUN]
+[0m19:09:07.468414 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_customer, now model.tpch.dim_supplier)
+[0m19:09:07.468540 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_supplier
+[0m19:09:07.469745 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_supplier"
+[0m19:09:07.469992 [debug] [Thread-1 (]: Began executing node model.tpch.dim_supplier
+[0m19:09:07.472510 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_supplier"
+[0m19:09:07.472770 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_supplier"
+[0m19:09:07.472892 [debug] [Thread-1 (]: On model.tpch.dim_supplier: BEGIN
+[0m19:09:07.473007 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.473260 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.473378 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_supplier"
+[0m19:09:07.473508 [debug] [Thread-1 (]: On model.tpch.dim_supplier: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_supplier"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_supplier__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_supplier (SCD Type 2)
+-- History tracked by snapshot: snap_supplier
+-- Run `dbt snapshot` before `dbt run` to populate historical records.
+
+
+select
+    dbt_scd_id as dim_supplier_sk,
+    s_suppkey,
+    s_name,
+    s_address,
+    s_nationkey,
+    s_phone,
+    s_acctbal,
+    s_comment,
+    dbt_valid_from as valid_from,
+    dbt_valid_to as valid_to,
+    (dbt_valid_to is null) as is_current
+from "tpch"."snapshots"."snap_supplier"
+    );
+  
+  
+[0m19:09:07.473852 [debug] [Thread-1 (]: DuckDB adapter: duckdb error: Catalog Error: Table with name "snapshots.snap_supplier" does not exist because schema "snapshots" does not exist.
+
+LINE 28: from "tpch"."snapshots"."snap_supplier"
+              ^
+[0m19:09:07.473986 [debug] [Thread-1 (]: DuckDB adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_supplier"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_supplier__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_supplier (SCD Type 2)
+-- History tracked by snapshot: snap_supplier
+-- Run `dbt snapshot` before `dbt run` to populate historical records.
+
+
+select
+    dbt_scd_id as dim_supplier_sk,
+    s_suppkey,
+    s_name,
+    s_address,
+    s_nationkey,
+    s_phone,
+    s_acctbal,
+    s_comment,
+    dbt_valid_from as valid_from,
+    dbt_valid_to as valid_to,
+    (dbt_valid_to is null) as is_current
+from "tpch"."snapshots"."snap_supplier"
+    );
+  
+  
+[0m19:09:07.474116 [debug] [Thread-1 (]: DuckDB adapter: Rolling back transaction.
+[0m19:09:07.474232 [debug] [Thread-1 (]: On model.tpch.dim_supplier: ROLLBACK
+[0m19:09:07.474702 [debug] [Thread-1 (]: Failed to rollback 'model.tpch.dim_supplier'
+[0m19:09:07.474862 [debug] [Thread-1 (]: On model.tpch.dim_supplier: Close
+[0m19:09:07.476451 [debug] [Thread-1 (]: Runtime Error in model dim_supplier (models/silver/dimensions/dim_supplier.sql)
+  Catalog Error: Table with name "snapshots.snap_supplier" does not exist because schema "snapshots" does not exist.
+  
+  LINE 28: from "tpch"."snapshots"."snap_supplier"
+                ^
+[0m19:09:07.476618 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa1de50>]}
+[0m19:09:07.476841 [error] [Thread-1 (]: 2 of 19 ERROR creating sql table model main.dim_supplier ....................... [[31mERROR[0m in 0.01s]
+[0m19:09:07.477047 [debug] [Thread-1 (]: Finished running node model.tpch.dim_supplier
+[0m19:09:07.477182 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_customer
+[0m19:09:07.477348 [debug] [Thread-4 (]: Marking all children of 'model.tpch.dim_supplier' to be skipped because of status 'error'.  Reason: Runtime Error in model dim_supplier (models/silver/dimensions/dim_supplier.sql)
+  Catalog Error: Table with name "snapshots.snap_supplier" does not exist because schema "snapshots" does not exist.
+  
+  LINE 28: from "tpch"."snapshots"."snap_supplier"
+                ^.
+[0m19:09:07.480808 [info ] [Thread-1 (]: 3 of 19 START sql view model main.stg_main_customer ............................ [RUN]
+[0m19:09:07.481083 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_supplier, now model.tpch.stg_main_customer)
+[0m19:09:07.481215 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_customer
+[0m19:09:07.482369 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_customer"
+[0m19:09:07.482775 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_customer
+[0m19:09:07.489490 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_customer"
+[0m19:09:07.489867 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_customer"
+[0m19:09:07.489997 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: BEGIN
+[0m19:09:07.490114 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.490383 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.490499 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_customer"
+[0m19:09:07.490621 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_customer"} */
+
+  
+  create view "tpch"."main"."stg_main_customer__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    c_custkey,
+    c_name,
+    c_address,
+    c_nationkey,
+    c_phone,
+    c_acctbal,
+    c_mktsegment,
+    c_comment
+from "tpch"."main"."customer"
+  );
+
+[0m19:09:07.490917 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.493038 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_customer"
+[0m19:09:07.493169 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_customer"} */
+alter view "tpch"."main"."stg_main_customer__dbt_tmp" rename to "stg_main_customer"
+[0m19:09:07.493422 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.497844 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: COMMIT
+[0m19:09:07.497991 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_customer"
+[0m19:09:07.498107 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: COMMIT
+[0m19:09:07.498546 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.500409 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_customer"
+[0m19:09:07.500537 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_customer"} */
+
+      drop view if exists "tpch"."main"."stg_main_customer__dbt_backup" cascade
+    
+[0m19:09:07.500753 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.501665 [debug] [Thread-1 (]: On model.tpch.stg_main_customer: Close
+[0m19:09:07.501885 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073ad450>]}
+[0m19:09:07.502130 [info ] [Thread-1 (]: 3 of 19 OK created sql view model main.stg_main_customer ....................... [[32mOK[0m in 0.02s]
+[0m19:09:07.502338 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_customer
+[0m19:09:07.502475 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_lineitem
+[0m19:09:07.502651 [info ] [Thread-1 (]: 4 of 19 START sql view model main.stg_main_lineitem ............................ [RUN]
+[0m19:09:07.502802 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_customer, now model.tpch.stg_main_lineitem)
+[0m19:09:07.502928 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_lineitem
+[0m19:09:07.503889 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_lineitem"
+[0m19:09:07.504165 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_lineitem
+[0m19:09:07.505441 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_lineitem"
+[0m19:09:07.505695 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_lineitem"
+[0m19:09:07.505814 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: BEGIN
+[0m19:09:07.505930 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.506148 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.506265 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_lineitem"
+[0m19:09:07.506391 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_lineitem"} */
+
+  
+  create view "tpch"."main"."stg_main_lineitem__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    l_orderkey,
+    l_partkey,
+    l_suppkey,
+    l_linenumber,
+    l_quantity,
+    l_extendedprice,
+    l_discount,
+    l_tax,
+    l_returnflag,
+    l_linestatus,
+    l_shipdate::date as l_shipdate,
+    l_commitdate::date as l_commitdate,
+    l_receiptdate::date as l_receiptdate,
+    l_shipinstruct,
+    l_shipmode,
+    l_comment
+from "tpch"."main"."lineitem"
+  );
+
+[0m19:09:07.506756 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.507687 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_lineitem"
+[0m19:09:07.507806 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_lineitem"} */
+alter view "tpch"."main"."stg_main_lineitem__dbt_tmp" rename to "stg_main_lineitem"
+[0m19:09:07.508001 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.508579 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: COMMIT
+[0m19:09:07.508704 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_lineitem"
+[0m19:09:07.508814 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: COMMIT
+[0m19:09:07.509037 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.509718 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_lineitem"
+[0m19:09:07.509840 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_lineitem"} */
+
+      drop view if exists "tpch"."main"."stg_main_lineitem__dbt_backup" cascade
+    
+[0m19:09:07.510012 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.510427 [debug] [Thread-1 (]: On model.tpch.stg_main_lineitem: Close
+[0m19:09:07.510607 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa8b850>]}
+[0m19:09:07.510819 [info ] [Thread-1 (]: 4 of 19 OK created sql view model main.stg_main_lineitem ....................... [[32mOK[0m in 0.01s]
+[0m19:09:07.511004 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_lineitem
+[0m19:09:07.511138 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_nation
+[0m19:09:07.511342 [info ] [Thread-1 (]: 5 of 19 START sql view model main.stg_main_nation .............................. [RUN]
+[0m19:09:07.511488 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_lineitem, now model.tpch.stg_main_nation)
+[0m19:09:07.511610 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_nation
+[0m19:09:07.512487 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_nation"
+[0m19:09:07.512724 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_nation
+[0m19:09:07.513865 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_nation"
+[0m19:09:07.514096 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_nation"
+[0m19:09:07.514211 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: BEGIN
+[0m19:09:07.514321 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.514483 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.514594 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_nation"
+[0m19:09:07.514709 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_nation"} */
+
+  
+  create view "tpch"."main"."stg_main_nation__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    n_nationkey,
+    n_name,
+    n_regionkey,
+    n_comment
+from "tpch"."main"."nation"
+  );
+
+[0m19:09:07.514910 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.515775 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_nation"
+[0m19:09:07.515900 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_nation"} */
+alter view "tpch"."main"."stg_main_nation__dbt_tmp" rename to "stg_main_nation"
+[0m19:09:07.516131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.516601 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: COMMIT
+[0m19:09:07.516735 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_nation"
+[0m19:09:07.516848 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: COMMIT
+[0m19:09:07.517086 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.518001 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_nation"
+[0m19:09:07.518120 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_nation"} */
+
+      drop view if exists "tpch"."main"."stg_main_nation__dbt_backup" cascade
+    
+[0m19:09:07.518295 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.518718 [debug] [Thread-1 (]: On model.tpch.stg_main_nation: Close
+[0m19:09:07.518911 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa86210>]}
+[0m19:09:07.519136 [info ] [Thread-1 (]: 5 of 19 OK created sql view model main.stg_main_nation ......................... [[32mOK[0m in 0.01s]
+[0m19:09:07.519327 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_nation
+[0m19:09:07.519457 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_orders
+[0m19:09:07.519624 [info ] [Thread-1 (]: 6 of 19 START sql view model main.stg_main_orders .............................. [RUN]
+[0m19:09:07.519783 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_nation, now model.tpch.stg_main_orders)
+[0m19:09:07.519900 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_orders
+[0m19:09:07.520847 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_orders"
+[0m19:09:07.521123 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_orders
+[0m19:09:07.522246 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_orders"
+[0m19:09:07.522475 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_orders"
+[0m19:09:07.522585 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: BEGIN
+[0m19:09:07.522691 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.522874 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.522982 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_orders"
+[0m19:09:07.523096 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_orders"} */
+
+  
+  create view "tpch"."main"."stg_main_orders__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    o_orderkey,
+    o_custkey,
+    o_orderstatus,
+    o_totalprice,
+    o_orderdate::date as o_orderdate,
+    o_orderpriority,
+    o_clerk,
+    o_shippriority,
+    o_comment
+from "tpch"."main"."orders"
+  );
+
+[0m19:09:07.523358 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.524230 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_orders"
+[0m19:09:07.524349 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_orders"} */
+alter view "tpch"."main"."stg_main_orders__dbt_tmp" rename to "stg_main_orders"
+[0m19:09:07.524531 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.524908 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: COMMIT
+[0m19:09:07.525025 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_orders"
+[0m19:09:07.525128 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: COMMIT
+[0m19:09:07.525342 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.526157 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_orders"
+[0m19:09:07.526272 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_orders"} */
+
+      drop view if exists "tpch"."main"."stg_main_orders__dbt_backup" cascade
+    
+[0m19:09:07.526462 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.526931 [debug] [Thread-1 (]: On model.tpch.stg_main_orders: Close
+[0m19:09:07.527115 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa85370>]}
+[0m19:09:07.527334 [info ] [Thread-1 (]: 6 of 19 OK created sql view model main.stg_main_orders ......................... [[32mOK[0m in 0.01s]
+[0m19:09:07.527521 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_orders
+[0m19:09:07.527653 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_part
+[0m19:09:07.527838 [info ] [Thread-1 (]: 7 of 19 START sql view model main.stg_main_part ................................ [RUN]
+[0m19:09:07.527985 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_orders, now model.tpch.stg_main_part)
+[0m19:09:07.528104 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_part
+[0m19:09:07.529039 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_part"
+[0m19:09:07.529295 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_part
+[0m19:09:07.530445 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_part"
+[0m19:09:07.530701 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_part"
+[0m19:09:07.530818 [debug] [Thread-1 (]: On model.tpch.stg_main_part: BEGIN
+[0m19:09:07.530931 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.531123 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.531238 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_part"
+[0m19:09:07.531358 [debug] [Thread-1 (]: On model.tpch.stg_main_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_part"} */
+
+  
+  create view "tpch"."main"."stg_main_part__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    p_partkey,
+    p_name,
+    p_mfgr,
+    p_brand,
+    p_type,
+    p_size,
+    p_container,
+    p_retailprice,
+    p_comment
+from "tpch"."main"."part"
+  );
+
+[0m19:09:07.531597 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.532566 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_part"
+[0m19:09:07.532696 [debug] [Thread-1 (]: On model.tpch.stg_main_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_part"} */
+alter view "tpch"."main"."stg_main_part__dbt_tmp" rename to "stg_main_part"
+[0m19:09:07.532932 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.533413 [debug] [Thread-1 (]: On model.tpch.stg_main_part: COMMIT
+[0m19:09:07.533546 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_part"
+[0m19:09:07.533658 [debug] [Thread-1 (]: On model.tpch.stg_main_part: COMMIT
+[0m19:09:07.533922 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.534972 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_part"
+[0m19:09:07.535111 [debug] [Thread-1 (]: On model.tpch.stg_main_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_part"} */
+
+      drop view if exists "tpch"."main"."stg_main_part__dbt_backup" cascade
+    
+[0m19:09:07.535328 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.535795 [debug] [Thread-1 (]: On model.tpch.stg_main_part: Close
+[0m19:09:07.536007 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa850d0>]}
+[0m19:09:07.536247 [info ] [Thread-1 (]: 7 of 19 OK created sql view model main.stg_main_part ........................... [[32mOK[0m in 0.01s]
+[0m19:09:07.536434 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_part
+[0m19:09:07.536568 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_partsupp
+[0m19:09:07.536740 [info ] [Thread-1 (]: 8 of 19 START sql view model main.stg_main_partsupp ............................ [RUN]
+[0m19:09:07.536905 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_part, now model.tpch.stg_main_partsupp)
+[0m19:09:07.537023 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_partsupp
+[0m19:09:07.537993 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_partsupp"
+[0m19:09:07.538307 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_partsupp
+[0m19:09:07.539458 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_partsupp"
+[0m19:09:07.539699 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_partsupp"
+[0m19:09:07.539811 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: BEGIN
+[0m19:09:07.539915 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.540106 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.540214 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_partsupp"
+[0m19:09:07.540328 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_partsupp"} */
+
+  
+  create view "tpch"."main"."stg_main_partsupp__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    ps_partkey,
+    ps_suppkey,
+    ps_availqty,
+    ps_supplycost,
+    ps_comment
+from "tpch"."main"."partsupp"
+  );
+
+[0m19:09:07.540580 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.541440 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_partsupp"
+[0m19:09:07.541561 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_partsupp"} */
+alter view "tpch"."main"."stg_main_partsupp__dbt_tmp" rename to "stg_main_partsupp"
+[0m19:09:07.541745 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.542124 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: COMMIT
+[0m19:09:07.542247 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_partsupp"
+[0m19:09:07.542356 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: COMMIT
+[0m19:09:07.542569 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.543240 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_partsupp"
+[0m19:09:07.543361 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_partsupp"} */
+
+      drop view if exists "tpch"."main"."stg_main_partsupp__dbt_backup" cascade
+    
+[0m19:09:07.543533 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.543933 [debug] [Thread-1 (]: On model.tpch.stg_main_partsupp: Close
+[0m19:09:07.544103 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa84d10>]}
+[0m19:09:07.544311 [info ] [Thread-1 (]: 8 of 19 OK created sql view model main.stg_main_partsupp ....................... [[32mOK[0m in 0.01s]
+[0m19:09:07.544493 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_partsupp
+[0m19:09:07.544627 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_region
+[0m19:09:07.544799 [info ] [Thread-1 (]: 9 of 19 START sql view model main.stg_main_region .............................. [RUN]
+[0m19:09:07.544961 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_partsupp, now model.tpch.stg_main_region)
+[0m19:09:07.545081 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_region
+[0m19:09:07.547240 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_region"
+[0m19:09:07.547500 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_region
+[0m19:09:07.548418 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_region"
+[0m19:09:07.548659 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_region"
+[0m19:09:07.548772 [debug] [Thread-1 (]: On model.tpch.stg_main_region: BEGIN
+[0m19:09:07.548880 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.549057 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.549173 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_region"
+[0m19:09:07.549290 [debug] [Thread-1 (]: On model.tpch.stg_main_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_region"} */
+
+  
+  create view "tpch"."main"."stg_main_region__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    r_regionkey,
+    r_name,
+    r_comment
+from "tpch"."main"."region"
+  );
+
+[0m19:09:07.549497 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.550482 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_region"
+[0m19:09:07.550605 [debug] [Thread-1 (]: On model.tpch.stg_main_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_region"} */
+alter view "tpch"."main"."stg_main_region__dbt_tmp" rename to "stg_main_region"
+[0m19:09:07.550812 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.551221 [debug] [Thread-1 (]: On model.tpch.stg_main_region: COMMIT
+[0m19:09:07.551341 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_region"
+[0m19:09:07.551449 [debug] [Thread-1 (]: On model.tpch.stg_main_region: COMMIT
+[0m19:09:07.551674 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.552334 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_region"
+[0m19:09:07.552452 [debug] [Thread-1 (]: On model.tpch.stg_main_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_region"} */
+
+      drop view if exists "tpch"."main"."stg_main_region__dbt_backup" cascade
+    
+[0m19:09:07.552634 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.553074 [debug] [Thread-1 (]: On model.tpch.stg_main_region: Close
+[0m19:09:07.553259 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa879b0>]}
+[0m19:09:07.553477 [info ] [Thread-1 (]: 9 of 19 OK created sql view model main.stg_main_region ......................... [[32mOK[0m in 0.01s]
+[0m19:09:07.553663 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_region
+[0m19:09:07.553795 [debug] [Thread-1 (]: Began running node model.tpch.stg_main_supplier
+[0m19:09:07.553964 [info ] [Thread-1 (]: 10 of 19 START sql view model main.stg_main_supplier ........................... [RUN]
+[0m19:09:07.554126 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_region, now model.tpch.stg_main_supplier)
+[0m19:09:07.554250 [debug] [Thread-1 (]: Began compiling node model.tpch.stg_main_supplier
+[0m19:09:07.555439 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.stg_main_supplier"
+[0m19:09:07.555707 [debug] [Thread-1 (]: Began executing node model.tpch.stg_main_supplier
+[0m19:09:07.556681 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.stg_main_supplier"
+[0m19:09:07.556935 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_supplier"
+[0m19:09:07.557048 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: BEGIN
+[0m19:09:07.557158 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.557341 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.557452 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_supplier"
+[0m19:09:07.557571 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_supplier"} */
+
+  
+  create view "tpch"."main"."stg_main_supplier__dbt_tmp" as (
+    -- Bronze: Staging from source (explicit columns + type casts)
+select
+    s_suppkey,
+    s_name,
+    s_address,
+    s_nationkey,
+    s_phone,
+    s_acctbal,
+    s_comment
+from "tpch"."main"."supplier"
+  );
+
+[0m19:09:07.557795 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.558831 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_supplier"
+[0m19:09:07.558952 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_supplier"} */
+alter view "tpch"."main"."stg_main_supplier__dbt_tmp" rename to "stg_main_supplier"
+[0m19:09:07.559133 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.559508 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: COMMIT
+[0m19:09:07.559626 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_supplier"
+[0m19:09:07.559734 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: COMMIT
+[0m19:09:07.559957 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.560619 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.stg_main_supplier"
+[0m19:09:07.560738 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.stg_main_supplier"} */
+
+      drop view if exists "tpch"."main"."stg_main_supplier__dbt_backup" cascade
+    
+[0m19:09:07.560904 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.561299 [debug] [Thread-1 (]: On model.tpch.stg_main_supplier: Close
+[0m19:09:07.561463 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa87650>]}
+[0m19:09:07.561665 [info ] [Thread-1 (]: 10 of 19 OK created sql view model main.stg_main_supplier ...................... [[32mOK[0m in 0.01s]
+[0m19:09:07.561847 [debug] [Thread-1 (]: Finished running node model.tpch.stg_main_supplier
+[0m19:09:07.561983 [debug] [Thread-1 (]: Began running node model.tpch.fct_lineitem
+[0m19:09:07.562144 [info ] [Thread-1 (]: 11 of 19 START sql incremental model main.fct_lineitem ......................... [RUN]
+[0m19:09:07.562291 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.stg_main_supplier, now model.tpch.fct_lineitem)
+[0m19:09:07.562414 [debug] [Thread-1 (]: Began compiling node model.tpch.fct_lineitem
+[0m19:09:07.563943 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.fct_lineitem"
+[0m19:09:07.564231 [debug] [Thread-1 (]: Began executing node model.tpch.fct_lineitem
+[0m19:09:07.577736 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.fct_lineitem"
+[0m19:09:07.578176 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_lineitem"
+[0m19:09:07.578313 [debug] [Thread-1 (]: On model.tpch.fct_lineitem: BEGIN
+[0m19:09:07.578449 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.578701 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.578822 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_lineitem"
+[0m19:09:07.578967 [debug] [Thread-1 (]: On model.tpch.fct_lineitem: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.fct_lineitem"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."fct_lineitem"
+  
+    as (
+      -- Fact: fct_lineitem
+
+
+select
+    md5(cast(coalesce(cast(l_orderkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as fct_lineitem_sk,
+    l_orderkey,
+    l_partkey,
+    l_suppkey,
+    l_shipdate,
+    l_quantity,
+    l_extendedprice,
+    l_discount,
+    l_tax,
+    l_extendedprice * (1 - l_discount) as line_total,
+    l_extendedprice * (1 - l_discount) * (1 - l_tax) as net_revenue,
+    l_commitdate,
+    l_receiptdate
+from "tpch"."main"."stg_main_lineitem"
+
+    
+
+    );
+  
+  
+  
+[0m19:09:07.673455 [debug] [Thread-1 (]: SQL status: OK in 0.094 seconds
+[0m19:09:07.675556 [debug] [Thread-1 (]: On model.tpch.fct_lineitem: COMMIT
+[0m19:09:07.675714 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_lineitem"
+[0m19:09:07.675833 [debug] [Thread-1 (]: On model.tpch.fct_lineitem: COMMIT
+[0m19:09:07.677788 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m19:09:07.678107 [debug] [Thread-1 (]: On model.tpch.fct_lineitem: Close
+[0m19:09:07.678328 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab18170>]}
+[0m19:09:07.678585 [info ] [Thread-1 (]: 11 of 19 OK created sql incremental model main.fct_lineitem .................... [[32mOK[0m in 0.12s]
+[0m19:09:07.678779 [debug] [Thread-1 (]: Finished running node model.tpch.fct_lineitem
+[0m19:09:07.678921 [debug] [Thread-1 (]: Began running node model.tpch.dim_nation
+[0m19:09:07.679134 [info ] [Thread-1 (]: 12 of 19 START sql table model main.dim_nation ................................. [RUN]
+[0m19:09:07.679362 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.fct_lineitem, now model.tpch.dim_nation)
+[0m19:09:07.679501 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_nation
+[0m19:09:07.680823 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_nation"
+[0m19:09:07.681098 [debug] [Thread-1 (]: Began executing node model.tpch.dim_nation
+[0m19:09:07.682428 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_nation"
+[0m19:09:07.682722 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_nation"
+[0m19:09:07.682841 [debug] [Thread-1 (]: On model.tpch.dim_nation: BEGIN
+[0m19:09:07.682955 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.683190 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.683306 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_nation"
+[0m19:09:07.683425 [debug] [Thread-1 (]: On model.tpch.dim_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_nation"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_nation__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_nation (SCD Type 1)
+
+
+select
+    md5(cast(coalesce(cast(n_nationkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as dim_nation_sk,
+    n_nationkey,
+    n_name,
+    n_regionkey,
+    n_comment
+from "tpch"."main"."stg_main_nation"
+    );
+  
+  
+[0m19:09:07.684219 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m19:09:07.685200 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_nation"
+[0m19:09:07.685323 [debug] [Thread-1 (]: On model.tpch.dim_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_nation"} */
+alter table "tpch"."main"."dim_nation__dbt_tmp" rename to "dim_nation"
+[0m19:09:07.685520 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.685937 [debug] [Thread-1 (]: On model.tpch.dim_nation: COMMIT
+[0m19:09:07.686058 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_nation"
+[0m19:09:07.686175 [debug] [Thread-1 (]: On model.tpch.dim_nation: COMMIT
+[0m19:09:07.686426 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.687284 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_nation"
+[0m19:09:07.687409 [debug] [Thread-1 (]: On model.tpch.dim_nation: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_nation"} */
+
+      drop table if exists "tpch"."main"."dim_nation__dbt_backup" cascade
+    
+[0m19:09:07.687590 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.688002 [debug] [Thread-1 (]: On model.tpch.dim_nation: Close
+[0m19:09:07.688195 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab18710>]}
+[0m19:09:07.688421 [info ] [Thread-1 (]: 12 of 19 OK created sql table model main.dim_nation ............................ [[32mOK[0m in 0.01s]
+[0m19:09:07.688612 [debug] [Thread-1 (]: Finished running node model.tpch.dim_nation
+[0m19:09:07.688746 [debug] [Thread-1 (]: Began running node model.tpch.fct_orders
+[0m19:09:07.688915 [info ] [Thread-1 (]: 13 of 19 START sql incremental model main.fct_orders ........................... [RUN]
+[0m19:09:07.689053 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_nation, now model.tpch.fct_orders)
+[0m19:09:07.689173 [debug] [Thread-1 (]: Began compiling node model.tpch.fct_orders
+[0m19:09:07.690583 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.fct_orders"
+[0m19:09:07.690835 [debug] [Thread-1 (]: Began executing node model.tpch.fct_orders
+[0m19:09:07.692101 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.fct_orders"
+[0m19:09:07.692327 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_orders"
+[0m19:09:07.692443 [debug] [Thread-1 (]: On model.tpch.fct_orders: BEGIN
+[0m19:09:07.692551 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.692719 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.692829 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_orders"
+[0m19:09:07.692946 [debug] [Thread-1 (]: On model.tpch.fct_orders: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.fct_orders"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."fct_orders"
+  
+    as (
+      -- Fact: fct_orders
+
+
+select
+    md5(cast(coalesce(cast(o_orderkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as fct_orders_sk,
+    o_orderkey,
+    o_custkey,
+    o_orderdate,
+    o_totalprice
+from "tpch"."main"."stg_main_orders"
+
+    
+
+    );
+  
+  
+  
+[0m19:09:07.739895 [debug] [Thread-1 (]: SQL status: OK in 0.047 seconds
+[0m19:09:07.740505 [debug] [Thread-1 (]: On model.tpch.fct_orders: COMMIT
+[0m19:09:07.740654 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.fct_orders"
+[0m19:09:07.740764 [debug] [Thread-1 (]: On model.tpch.fct_orders: COMMIT
+[0m19:09:07.742127 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m19:09:07.742388 [debug] [Thread-1 (]: On model.tpch.fct_orders: Close
+[0m19:09:07.742594 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab19670>]}
+[0m19:09:07.742836 [info ] [Thread-1 (]: 13 of 19 OK created sql incremental model main.fct_orders ...................... [[32mOK[0m in 0.05s]
+[0m19:09:07.743027 [debug] [Thread-1 (]: Finished running node model.tpch.fct_orders
+[0m19:09:07.743161 [debug] [Thread-1 (]: Began running node model.tpch.dim_part
+[0m19:09:07.743337 [info ] [Thread-1 (]: 14 of 19 START sql table model main.dim_part ................................... [RUN]
+[0m19:09:07.743510 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.fct_orders, now model.tpch.dim_part)
+[0m19:09:07.743630 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_part
+[0m19:09:07.745193 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_part"
+[0m19:09:07.745479 [debug] [Thread-1 (]: Began executing node model.tpch.dim_part
+[0m19:09:07.746486 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_part"
+[0m19:09:07.746733 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_part"
+[0m19:09:07.746846 [debug] [Thread-1 (]: On model.tpch.dim_part: BEGIN
+[0m19:09:07.746956 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.747154 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.747262 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_part"
+[0m19:09:07.747382 [debug] [Thread-1 (]: On model.tpch.dim_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_part"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_part__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_part (SCD Type 1)
+
+
+select
+    md5(cast(coalesce(cast(p_partkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as dim_part_sk,
+    p_partkey,
+    p_name,
+    p_mfgr,
+    p_brand,
+    p_type,
+    p_size,
+    p_container,
+    p_retailprice,
+    p_comment
+from "tpch"."main"."stg_main_part"
+    );
+  
+  
+[0m19:09:07.759836 [debug] [Thread-1 (]: SQL status: OK in 0.012 seconds
+[0m19:09:07.761256 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_part"
+[0m19:09:07.761398 [debug] [Thread-1 (]: On model.tpch.dim_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_part"} */
+alter table "tpch"."main"."dim_part__dbt_tmp" rename to "dim_part"
+[0m19:09:07.761671 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.762114 [debug] [Thread-1 (]: On model.tpch.dim_part: COMMIT
+[0m19:09:07.762232 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_part"
+[0m19:09:07.762338 [debug] [Thread-1 (]: On model.tpch.dim_part: COMMIT
+[0m19:09:07.766317 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m19:09:07.767113 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_part"
+[0m19:09:07.767241 [debug] [Thread-1 (]: On model.tpch.dim_part: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_part"} */
+
+      drop table if exists "tpch"."main"."dim_part__dbt_backup" cascade
+    
+[0m19:09:07.767441 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.767919 [debug] [Thread-1 (]: On model.tpch.dim_part: Close
+[0m19:09:07.768140 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab19670>]}
+[0m19:09:07.768385 [info ] [Thread-1 (]: 14 of 19 OK created sql table model main.dim_part .............................. [[32mOK[0m in 0.02s]
+[0m19:09:07.768589 [debug] [Thread-1 (]: Finished running node model.tpch.dim_part
+[0m19:09:07.768728 [debug] [Thread-1 (]: Began running node model.tpch.dim_partsupp
+[0m19:09:07.768900 [info ] [Thread-1 (]: 15 of 19 START sql table model main.dim_partsupp ............................... [RUN]
+[0m19:09:07.769048 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_part, now model.tpch.dim_partsupp)
+[0m19:09:07.769170 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_partsupp
+[0m19:09:07.770662 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_partsupp"
+[0m19:09:07.770974 [debug] [Thread-1 (]: Began executing node model.tpch.dim_partsupp
+[0m19:09:07.772029 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_partsupp"
+[0m19:09:07.772281 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_partsupp"
+[0m19:09:07.772401 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: BEGIN
+[0m19:09:07.772520 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.772717 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.772832 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_partsupp"
+[0m19:09:07.772955 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_partsupp"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_partsupp__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_partsupp (SCD Type 1)
+
+
+select
+    md5(cast(coalesce(cast(ps_partkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as dim_partsupp_sk,
+    ps_partkey,
+    ps_suppkey,
+    ps_availqty,
+    ps_supplycost,
+    ps_comment
+from "tpch"."main"."stg_main_partsupp"
+    );
+  
+  
+[0m19:09:07.795738 [debug] [Thread-1 (]: SQL status: OK in 0.023 seconds
+[0m19:09:07.798596 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_partsupp"
+[0m19:09:07.798740 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_partsupp"} */
+alter table "tpch"."main"."dim_partsupp__dbt_tmp" rename to "dim_partsupp"
+[0m19:09:07.799006 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.799426 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: COMMIT
+[0m19:09:07.799549 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_partsupp"
+[0m19:09:07.799657 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: COMMIT
+[0m19:09:07.812217 [debug] [Thread-1 (]: SQL status: OK in 0.012 seconds
+[0m19:09:07.813192 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_partsupp"
+[0m19:09:07.813328 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_partsupp"} */
+
+      drop table if exists "tpch"."main"."dim_partsupp__dbt_backup" cascade
+    
+[0m19:09:07.813573 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.814099 [debug] [Thread-1 (]: On model.tpch.dim_partsupp: Close
+[0m19:09:07.814310 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab1a870>]}
+[0m19:09:07.814541 [info ] [Thread-1 (]: 15 of 19 OK created sql table model main.dim_partsupp .......................... [[32mOK[0m in 0.05s]
+[0m19:09:07.814735 [debug] [Thread-1 (]: Finished running node model.tpch.dim_partsupp
+[0m19:09:07.814875 [debug] [Thread-1 (]: Began running node model.tpch.dim_region
+[0m19:09:07.815046 [info ] [Thread-1 (]: 16 of 19 START sql table model main.dim_region ................................. [RUN]
+[0m19:09:07.815194 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_partsupp, now model.tpch.dim_region)
+[0m19:09:07.815323 [debug] [Thread-1 (]: Began compiling node model.tpch.dim_region
+[0m19:09:07.816874 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.dim_region"
+[0m19:09:07.817246 [debug] [Thread-1 (]: Began executing node model.tpch.dim_region
+[0m19:09:07.818253 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.dim_region"
+[0m19:09:07.818550 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_region"
+[0m19:09:07.818665 [debug] [Thread-1 (]: On model.tpch.dim_region: BEGIN
+[0m19:09:07.818774 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.818985 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.819097 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_region"
+[0m19:09:07.819218 [debug] [Thread-1 (]: On model.tpch.dim_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_region"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."dim_region__dbt_tmp"
+  
+    as (
+      -- Dimension: dim_region (SCD Type 1)
+
+
+select
+    md5(cast(coalesce(cast(r_regionkey as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as dim_region_sk,
+    r_regionkey,
+    r_name,
+    r_comment
+from "tpch"."main"."stg_main_region"
+    );
+  
+  
+[0m19:09:07.819755 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.821142 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_region"
+[0m19:09:07.821439 [debug] [Thread-1 (]: On model.tpch.dim_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_region"} */
+alter table "tpch"."main"."dim_region__dbt_tmp" rename to "dim_region"
+[0m19:09:07.821678 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.822119 [debug] [Thread-1 (]: On model.tpch.dim_region: COMMIT
+[0m19:09:07.822242 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_region"
+[0m19:09:07.822354 [debug] [Thread-1 (]: On model.tpch.dim_region: COMMIT
+[0m19:09:07.893153 [debug] [Thread-1 (]: SQL status: OK in 0.071 seconds
+[0m19:09:07.894194 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.dim_region"
+[0m19:09:07.894340 [debug] [Thread-1 (]: On model.tpch.dim_region: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.dim_region"} */
+
+      drop table if exists "tpch"."main"."dim_region__dbt_backup" cascade
+    
+[0m19:09:07.894600 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.895132 [debug] [Thread-1 (]: On model.tpch.dim_region: Close
+[0m19:09:07.895355 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab1b3b0>]}
+[0m19:09:07.895609 [info ] [Thread-1 (]: 16 of 19 OK created sql table model main.dim_region ............................ [[32mOK[0m in 0.08s]
+[0m19:09:07.895826 [debug] [Thread-1 (]: Finished running node model.tpch.dim_region
+[0m19:09:07.895982 [debug] [Thread-1 (]: Began running node model.tpch.agg_daily_lineitem_quantity
+[0m19:09:07.896151 [info ] [Thread-1 (]: 17 of 19 START sql table model main.agg_daily_lineitem_quantity ................ [RUN]
+[0m19:09:07.896378 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.dim_region, now model.tpch.agg_daily_lineitem_quantity)
+[0m19:09:07.896541 [debug] [Thread-1 (]: Began compiling node model.tpch.agg_daily_lineitem_quantity
+[0m19:09:07.897788 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.898183 [debug] [Thread-1 (]: Began executing node model.tpch.agg_daily_lineitem_quantity
+[0m19:09:07.899673 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.900071 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.900193 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: BEGIN
+[0m19:09:07.900303 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:07.900567 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.900677 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.900799 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_lineitem_quantity"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."agg_daily_lineitem_quantity__dbt_tmp"
+  
+    as (
+      -- Gold: agg_daily_lineitem_quantity
+-- Daily aggregates for line items by part and supplier
+
+
+select
+    date_trunc('day', l_shipdate) as daily_date,
+    l_partkey,
+    l_suppkey,
+    sum(l_quantity) as total_quantity,
+    avg(l_quantity) as avg_quantity,
+    min(l_quantity) as min_quantity,
+    max(l_quantity) as max_quantity,
+    count(*) as line_count,
+    count(distinct l_partkey) as distinct_part_count,
+    count(distinct l_suppkey) as distinct_supp_count
+from "tpch"."main"."fct_lineitem"
+group by 1, 2, 3
+    );
+  
+  
+[0m19:09:07.977659 [debug] [Thread-1 (]: SQL status: OK in 0.077 seconds
+[0m19:09:07.978940 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.979085 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_lineitem_quantity"} */
+alter table "tpch"."main"."agg_daily_lineitem_quantity__dbt_tmp" rename to "agg_daily_lineitem_quantity"
+[0m19:09:07.979372 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:07.979827 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: COMMIT
+[0m19:09:07.979960 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:07.980074 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: COMMIT
+[0m19:09:08.079442 [debug] [Thread-1 (]: SQL status: OK in 0.099 seconds
+[0m19:09:08.080667 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_lineitem_quantity"
+[0m19:09:08.080820 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_lineitem_quantity"} */
+
+      drop table if exists "tpch"."main"."agg_daily_lineitem_quantity__dbt_backup" cascade
+    
+[0m19:09:08.081073 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.081587 [debug] [Thread-1 (]: On model.tpch.agg_daily_lineitem_quantity: Close
+[0m19:09:08.081807 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab1b230>]}
+[0m19:09:08.082053 [info ] [Thread-1 (]: 17 of 19 OK created sql table model main.agg_daily_lineitem_quantity ........... [[32mOK[0m in 0.19s]
+[0m19:09:08.082242 [debug] [Thread-1 (]: Finished running node model.tpch.agg_daily_lineitem_quantity
+[0m19:09:08.082381 [debug] [Thread-1 (]: Began running node model.tpch.agg_monthly_lineitem_revenue
+[0m19:09:08.082592 [info ] [Thread-1 (]: 18 of 19 START sql table model main.agg_monthly_lineitem_revenue ............... [RUN]
+[0m19:09:08.082785 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.agg_daily_lineitem_quantity, now model.tpch.agg_monthly_lineitem_revenue)
+[0m19:09:08.082925 [debug] [Thread-1 (]: Began compiling node model.tpch.agg_monthly_lineitem_revenue
+[0m19:09:08.084053 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.084343 [debug] [Thread-1 (]: Began executing node model.tpch.agg_monthly_lineitem_revenue
+[0m19:09:08.085576 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.085836 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.085965 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: BEGIN
+[0m19:09:08.086077 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:08.086297 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.086410 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.086537 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_monthly_lineitem_revenue"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."agg_monthly_lineitem_revenue__dbt_tmp"
+  
+    as (
+      -- Gold: agg_monthly_lineitem_revenue
+-- Monthly aggregates for line items by part and supplier
+
+
+select
+    date_trunc('month', l_shipdate) as monthly_date,
+    l_partkey,
+    l_suppkey,
+    sum(line_total) as total_revenue,
+    sum(net_revenue) as net_revenue,
+    count(*) as order_count,
+    avg(l_discount) as avg_discount
+from "tpch"."main"."fct_lineitem"
+group by 1, 2, 3
+    );
+  
+  
+[0m19:09:08.118072 [debug] [Thread-1 (]: SQL status: OK in 0.031 seconds
+[0m19:09:08.119314 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.119455 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_monthly_lineitem_revenue"} */
+alter table "tpch"."main"."agg_monthly_lineitem_revenue__dbt_tmp" rename to "agg_monthly_lineitem_revenue"
+[0m19:09:08.119721 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.120160 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: COMMIT
+[0m19:09:08.120282 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.120392 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: COMMIT
+[0m19:09:08.216204 [debug] [Thread-1 (]: SQL status: OK in 0.096 seconds
+[0m19:09:08.217420 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_monthly_lineitem_revenue"
+[0m19:09:08.217568 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_monthly_lineitem_revenue"} */
+
+      drop table if exists "tpch"."main"."agg_monthly_lineitem_revenue__dbt_backup" cascade
+    
+[0m19:09:08.217830 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.218358 [debug] [Thread-1 (]: On model.tpch.agg_monthly_lineitem_revenue: Close
+[0m19:09:08.218573 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab1b290>]}
+[0m19:09:08.218814 [info ] [Thread-1 (]: 18 of 19 OK created sql table model main.agg_monthly_lineitem_revenue .......... [[32mOK[0m in 0.14s]
+[0m19:09:08.220702 [debug] [Thread-1 (]: Finished running node model.tpch.agg_monthly_lineitem_revenue
+[0m19:09:08.220864 [debug] [Thread-1 (]: Began running node model.tpch.agg_daily_orders_totalprice
+[0m19:09:08.221088 [info ] [Thread-1 (]: 19 of 19 START sql table model main.agg_daily_orders_totalprice ................ [RUN]
+[0m19:09:08.221286 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.tpch.agg_monthly_lineitem_revenue, now model.tpch.agg_daily_orders_totalprice)
+[0m19:09:08.221435 [debug] [Thread-1 (]: Began compiling node model.tpch.agg_daily_orders_totalprice
+[0m19:09:08.222661 [debug] [Thread-1 (]: Writing injected SQL for node "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.223040 [debug] [Thread-1 (]: Began executing node model.tpch.agg_daily_orders_totalprice
+[0m19:09:08.224427 [debug] [Thread-1 (]: Writing runtime sql for node "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.224727 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.224849 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: BEGIN
+[0m19:09:08.224961 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m19:09:08.225208 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.225324 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.225448 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_orders_totalprice"} */
+
+  
+    
+    
+
+    create  table
+      "tpch"."main"."agg_daily_orders_totalprice__dbt_tmp"
+  
+    as (
+      -- Gold: agg_daily_orders_totalprice
+-- Daily aggregates for orders by customer
+
+
+select
+    date_trunc('day', o_orderdate) as daily_date,
+    o_custkey,
+    sum(o_totalprice) as total_price,
+    count(*) as order_count,
+    avg(o_totalprice) as avg_order_price
+from "tpch"."main"."fct_orders"
+group by 1, 2
+    );
+  
+  
+[0m19:09:08.234168 [debug] [Thread-1 (]: SQL status: OK in 0.009 seconds
+[0m19:09:08.235509 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.235663 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_orders_totalprice"} */
+alter table "tpch"."main"."agg_daily_orders_totalprice__dbt_tmp" rename to "agg_daily_orders_totalprice"
+[0m19:09:08.235954 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.236407 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: COMMIT
+[0m19:09:08.236541 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.236659 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: COMMIT
+[0m19:09:08.252681 [debug] [Thread-1 (]: SQL status: OK in 0.016 seconds
+[0m19:09:08.253890 [debug] [Thread-1 (]: Using duckdb connection "model.tpch.agg_daily_orders_totalprice"
+[0m19:09:08.254030 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: /* {"app": "dbt", "dbt_version": "1.11.10", "profile_name": "tpch", "target_name": "dev", "node_id": "model.tpch.agg_daily_orders_totalprice"} */
+
+      drop table if exists "tpch"."main"."agg_daily_orders_totalprice__dbt_backup" cascade
+    
+[0m19:09:08.254273 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m19:09:08.254784 [debug] [Thread-1 (]: On model.tpch.agg_daily_orders_totalprice: Close
+[0m19:09:08.254987 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2fa28090-1458-4334-a230-2373c2d25cd8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ab1bf50>]}
+[0m19:09:08.255216 [info ] [Thread-1 (]: 19 of 19 OK created sql table model main.agg_daily_orders_totalprice ........... [[32mOK[0m in 0.03s]
+[0m19:09:08.255409 [debug] [Thread-1 (]: Finished running node model.tpch.agg_daily_orders_totalprice
+[0m19:09:08.255907 [debug] [MainThread]: Using duckdb connection "master"
+[0m19:09:08.256027 [debug] [MainThread]: On master: BEGIN
+[0m19:09:08.257239 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m19:09:08.257441 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m19:09:08.257537 [debug] [MainThread]: On master: COMMIT
+[0m19:09:08.257634 [debug] [MainThread]: Using duckdb connection "master"
+[0m19:09:08.257727 [debug] [MainThread]: On master: COMMIT
+[0m19:09:08.257859 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m19:09:08.257957 [debug] [MainThread]: On master: Close
+[0m19:09:08.258082 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m19:09:08.258182 [debug] [MainThread]: Connection 'model.tpch.agg_daily_orders_totalprice' was properly closed.
+[0m19:09:08.258327 [info ] [MainThread]: 
+[0m19:09:08.258534 [info ] [MainThread]: Finished running 2 incremental models, 9 table models, 8 view models in 0 hours 0 minutes and 0.91 seconds (0.91s).
+[0m19:09:08.259477 [debug] [MainThread]: Command end result
+[0m19:09:08.281332 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nchronaios/Documents/Github/conan/tpch_dbt/target/manifest.json
+[0m19:09:08.282651 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nchronaios/Documents/Github/conan/tpch_dbt/target/semantic_manifest.json
+[0m19:09:08.285349 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nchronaios/Documents/Github/conan/tpch_dbt/target/run_results.json
+[0m19:09:08.285486 [info ] [MainThread]: 
+[0m19:09:08.285633 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m19:09:08.285740 [info ] [MainThread]: 
+[0m19:09:08.285883 [error] [MainThread]: [31mFailure in model dim_customer (models/silver/dimensions/dim_customer.sql)[0m
+[0m19:09:08.286019 [error] [MainThread]:   Runtime Error in model dim_customer (models/silver/dimensions/dim_customer.sql)
+  Catalog Error: Table with name "snapshots.snap_customer" does not exist because schema "snapshots" does not exist.
+  
+  LINE 29: from "tpch"."snapshots"."snap_customer"
+                ^
+[0m19:09:08.286120 [info ] [MainThread]: 
+[0m19:09:08.286240 [info ] [MainThread]:   compiled code at target/compiled/tpch/models/silver/dimensions/dim_customer.sql
+[0m19:09:08.286339 [info ] [MainThread]: 
+[0m19:09:08.286456 [error] [MainThread]: [31mFailure in model dim_supplier (models/silver/dimensions/dim_supplier.sql)[0m
+[0m19:09:08.286578 [error] [MainThread]:   Runtime Error in model dim_supplier (models/silver/dimensions/dim_supplier.sql)
+  Catalog Error: Table with name "snapshots.snap_supplier" does not exist because schema "snapshots" does not exist.
+  
+  LINE 28: from "tpch"."snapshots"."snap_supplier"
+                ^
+[0m19:09:08.286670 [info ] [MainThread]: 
+[0m19:09:08.286782 [info ] [MainThread]:   compiled code at target/compiled/tpch/models/silver/dimensions/dim_supplier.sql
+[0m19:09:08.286882 [info ] [MainThread]: 
+[0m19:09:08.286996 [info ] [MainThread]: Done. PASS=17 WARN=0 ERROR=2 SKIP=0 NO-OP=0 TOTAL=19
+[0m19:09:08.287279 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 2.601221, "process_in_blocks": "0", "process_kernel_time": 0.275423, "process_mem_max_rss": "538329088", "process_out_blocks": "0", "process_user_time": 2.859216}
+[0m19:09:08.287457 [debug] [MainThread]: Command `dbt run` failed at 19:09:08.287423 after 2.60 seconds
+[0m19:09:08.287618 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108afa4b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a641d30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a49d250>]}
+[0m19:09:08.287771 [debug] [MainThread]: Flushing usage events
+[0m19:09:08.938372 [debug] [MainThread]: An error was encountered while trying to flush usage events
