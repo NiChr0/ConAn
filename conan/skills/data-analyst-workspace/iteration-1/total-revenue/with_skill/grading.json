@@ -1,0 +1,23 @@
+{
+  "eval_id": 2,
+  "eval_name": "total-revenue",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "Table with gross and net revenue"
+    },
+    {
+      "text": "leading_number",
+      "passed": true,
+      "evidence": "Leads with '$20.54B'"
+    },
+    {
+      "text": "confidence_high (>=70%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

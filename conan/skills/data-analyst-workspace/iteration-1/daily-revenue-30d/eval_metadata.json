@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "daily-revenue-30d",
+  "prompt": "daily revenue last 30 days",
+  "assertions": [
+    "contains_markdown_table",
+    "mentions_date_range",
+    "confidence_appropriate (<=85%)",
+    "leading_number"
+  ]
+}

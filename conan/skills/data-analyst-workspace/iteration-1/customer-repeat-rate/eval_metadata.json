@@ -1,0 +1,10 @@
+{
+  "eval_id": 9,
+  "eval_name": "customer-repeat-rate",
+  "prompt": "customer repeat order rate",
+  "assertions": [
+    "states_unavailable",
+    "explains_why",
+    "low_confidence (<=50%)"
+  ]
+}

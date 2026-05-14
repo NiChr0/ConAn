@@ -1,0 +1,10 @@
+{
+  "eval_id": 5,
+  "eval_name": "avg-discount-by-month",
+  "prompt": "average discount rate by month",
+  "assertions": [
+    "contains_markdown_table",
+    "pct_values",
+    "confidence_appropriate (>=60%)"
+  ]
+}

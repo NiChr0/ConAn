@@ -1,0 +1,710 @@
+{
+  "daily-revenue-30d": {
+    "sql": "SELECT CAST(daily_date AS DATE) as date, SUM(total_price) as daily_revenue FROM agg_daily_orders_totalprice WHERE daily_date >= (SELECT MAX(daily_date) FROM agg_daily_orders_totalprice) - INTERVAL '30 days' GROUP BY date ORDER BY date",
+    "columns": [
+      "date",
+      "daily_revenue"
+    ],
+    "rows": [
+      {
+        "date": "1998-07-03",
+        "daily_revenue": "9964353.42"
+      },
+      {
+        "date": "1998-07-04",
+        "daily_revenue": "9125920.84"
+      },
+      {
+        "date": "1998-07-05",
+        "daily_revenue": "8465705.72"
+      },
+      {
+        "date": "1998-07-06",
+        "daily_revenue": "8703971.15"
+      },
+      {
+        "date": "1998-07-07",
+        "daily_revenue": "8310196.11"
+      },
+      {
+        "date": "1998-07-08",
+        "daily_revenue": "8712304.00"
+      },
+      {
+        "date": "1998-07-09",
+        "daily_revenue": "9192538.45"
+      },
+      {
+        "date": "1998-07-10",
+        "daily_revenue": "8923835.73"
+      },
+      {
+        "date": "1998-07-11",
+        "daily_revenue": "10849638.05"
+      },
+      {
+        "date": "1998-07-12",
+        "daily_revenue": "8680445.33"
+      },
+      {
+        "date": "1998-07-13",
+        "daily_revenue": "9406233.86"
+      },
+      {
+        "date": "1998-07-14",
+        "daily_revenue": "8887925.01"
+      },
+      {
+        "date": "1998-07-15",
+        "daily_revenue": "8169643.80"
+      },
+      {
+        "date": "1998-07-16",
+        "daily_revenue": "9103307.34"
+      },
+      {
+        "date": "1998-07-17",
+        "daily_revenue": "10270543.83"
+      },
+      {
+        "date": "1998-07-18",
+        "daily_revenue": "9641859.08"
+      },
+      {
+        "date": "1998-07-19",
+        "daily_revenue": "10359367.88"
+      },
+      {
+        "date": "1998-07-20",
+        "daily_revenue": "9816214.11"
+      },
+      {
+        "date": "1998-07-21",
+        "daily_revenue": "9667184.55"
+      },
+      {
+        "date": "1998-07-22",
+        "daily_revenue": "10847341.33"
+      },
+      {
+        "date": "1998-07-23",
+        "daily_revenue": "7449230.94"
+      },
+      {
+        "date": "1998-07-24",
+        "daily_revenue": "9350836.96"
+      },
+      {
+        "date": "1998-07-25",
+        "daily_revenue": "10630759.94"
+      },
+      {
+        "date": "1998-07-26",
+        "daily_revenue": "9204479.39"
+      },
+      {
+        "date": "1998-07-27",
+        "daily_revenue": "9219265.89"
+      },
+      {
+        "date": "1998-07-28",
+        "daily_revenue": "8657292.91"
+      },
+      {
+        "date": "1998-07-29",
+        "daily_revenue": "8280610.35"
+      },
+      {
+        "date": "1998-07-30",
+        "daily_revenue": "6562278.59"
+      },
+      {
+        "date": "1998-07-31",
+        "daily_revenue": "9417568.68"
+      },
+      {
+        "date": "1998-08-01",
+        "daily_revenue": "8285111.86"
+      },
+      {
+        "date": "1998-08-02",
+        "daily_revenue": "10100836.05"
+      }
+    ],
+    "count": 31
+  },
+  "total-revenue": {
+    "sql": "SELECT SUM(total_revenue) as total_revenue, SUM(net_revenue) as total_net_revenue FROM agg_monthly_lineitem_revenue",
+    "columns": [
+      "total_revenue",
+      "total_net_revenue"
+    ],
+    "rows": [
+      {
+        "total_revenue": "20535072231.4150",
+        "total_net_revenue": "19713543289.751064"
+      }
+    ],
+    "count": 1
+  },
+  "top5-suppliers": {
+    "sql": "SELECT l_suppkey, SUM(order_count) as total_orders, SUM(total_revenue) as total_revenue FROM agg_monthly_lineitem_revenue GROUP BY l_suppkey ORDER BY total_orders DESC LIMIT 5",
+    "columns": [
+      "l_suppkey",
+      "total_orders",
+      "total_revenue"
+    ],
+    "rows": [
+      {
+        "l_suppkey": 74,
+        "total_orders": 702,
+        "total_revenue": "23100579.1566"
+      },
+      {
+        "l_suppkey": 347,
+        "total_orders": 677,
+        "total_revenue": "23028853.9308"
+      },
+      {
+        "l_suppkey": 755,
+        "total_orders": 675,
+        "total_revenue": "25232923.6587"
+      },
+      {
+        "l_suppkey": 756,
+        "total_orders": 670,
+        "total_revenue": "24455811.9959"
+      },
+      {
+        "l_suppkey": 451,
+        "total_orders": 667,
+        "total_revenue": "23175084.4492"
+      }
+    ],
+    "count": 5
+  },
+  "monthly-revenue-trend": {
+    "sql": "SELECT CAST(monthly_date AS DATE) as month, SUM(total_revenue) as revenue, SUM(order_count) as orders FROM agg_monthly_lineitem_revenue GROUP BY month ORDER BY month LIMIT 24",
+    "columns": [
+      "month",
+      "revenue",
+      "orders"
+    ],
+    "rows": [
+      {
+        "month": "1992-01-01",
+        "revenue": "32762506.2283",
+        "orders": 968
+      },
+      {
+        "month": "1992-02-01",
+        "revenue": "91504579.0374",
+        "orders": 2683
+      },
+      {
+        "month": "1992-03-01",
+        "revenue": "169856168.6912",
+        "orders": 4971
+      },
+      {
+        "month": "1992-04-01",
+        "revenue": "225555869.6531",
+        "orders": 6647
+      },
+      {
+        "month": "1992-05-01",
+        "revenue": "264883459.2789",
+        "orders": 7778
+      },
+      {
+        "month": "1992-06-01",
+        "revenue": "261061789.9353",
+        "orders": 7593
+      },
+      {
+        "month": "1992-07-01",
+        "revenue": "270172232.8399",
+        "orders": 7994
+      },
+      {
+        "month": "1992-08-01",
+        "revenue": "266764570.6463",
+        "orders": 7839
+      },
+      {
+        "month": "1992-09-01",
+        "revenue": "255474884.1573",
+        "orders": 7439
+      },
+      {
+        "month": "1992-10-01",
+        "revenue": "265478927.3376",
+        "orders": 7662
+      },
+      {
+        "month": "1992-11-01",
+        "revenue": "254985758.7893",
+        "orders": 7390
+      },
+      {
+        "month": "1992-12-01",
+        "revenue": "256883997.0586",
+        "orders": 7444
+      },
+      {
+        "month": "1993-01-01",
+        "revenue": "258552146.6831",
+        "orders": 7531
+      },
+      {
+        "month": "1993-02-01",
+        "revenue": "233263599.2039",
+        "orders": 6845
+      },
+      {
+        "month": "1993-03-01",
+        "revenue": "256662903.1644",
+        "orders": 7499
+      },
+      {
+        "month": "1993-04-01",
+        "revenue": "254501820.3724",
+        "orders": 7444
+      },
+      {
+        "month": "1993-05-01",
+        "revenue": "258300206.0201",
+        "orders": 7473
+      },
+      {
+        "month": "1993-06-01",
+        "revenue": "253769752.2108",
+        "orders": 7433
+      },
+      {
+        "month": "1993-07-01",
+        "revenue": "265967862.3916",
+        "orders": 7714
+      },
+      {
+        "month": "1993-08-01",
+        "revenue": "260310126.2746",
+        "orders": 7648
+      },
+      {
+        "month": "1993-09-01",
+        "revenue": "246740202.5330",
+        "orders": 7310
+      },
+      {
+        "month": "1993-10-01",
+        "revenue": "262763957.8768",
+        "orders": 7677
+      },
+      {
+        "month": "1993-11-01",
+        "revenue": "243869264.8435",
+        "orders": 7106
+      },
+      {
+        "month": "1993-12-01",
+        "revenue": "262367547.9536",
+        "orders": 7653
+      }
+    ],
+    "count": 24
+  },
+  "avg-discount-by-month": {
+    "sql": "SELECT CAST(monthly_date AS DATE) as month, ROUND(AVG(avg_discount)*100, 2) as avg_discount_pct FROM agg_monthly_lineitem_revenue GROUP BY month ORDER BY month LIMIT 24",
+    "columns": [
+      "month",
+      "avg_discount_pct"
+    ],
+    "rows": [
+      {
+        "month": "1992-01-01",
+        "avg_discount_pct": 5.02
+      },
+      {
+        "month": "1992-02-01",
+        "avg_discount_pct": 5.02
+      },
+      {
+        "month": "1992-03-01",
+        "avg_discount_pct": 4.97
+      },
+      {
+        "month": "1992-04-01",
+        "avg_discount_pct": 5.0
+      },
+      {
+        "month": "1992-05-01",
+        "avg_discount_pct": 5.04
+      },
+      {
+        "month": "1992-06-01",
+        "avg_discount_pct": 5.03
+      },
+      {
+        "month": "1992-07-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1992-08-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1992-09-01",
+        "avg_discount_pct": 5.0
+      },
+      {
+        "month": "1992-10-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1992-11-01",
+        "avg_discount_pct": 5.02
+      },
+      {
+        "month": "1992-12-01",
+        "avg_discount_pct": 5.0
+      },
+      {
+        "month": "1993-01-01",
+        "avg_discount_pct": 5.02
+      },
+      {
+        "month": "1993-02-01",
+        "avg_discount_pct": 5.06
+      },
+      {
+        "month": "1993-03-01",
+        "avg_discount_pct": 5.09
+      },
+      {
+        "month": "1993-04-01",
+        "avg_discount_pct": 5.03
+      },
+      {
+        "month": "1993-05-01",
+        "avg_discount_pct": 5.01
+      },
+      {
+        "month": "1993-06-01",
+        "avg_discount_pct": 5.05
+      },
+      {
+        "month": "1993-07-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1993-08-01",
+        "avg_discount_pct": 5.0
+      },
+      {
+        "month": "1993-09-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1993-10-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1993-11-01",
+        "avg_discount_pct": 4.99
+      },
+      {
+        "month": "1993-12-01",
+        "avg_discount_pct": 5.01
+      }
+    ],
+    "count": 24
+  },
+  "net-vs-gross-last-quarter": {
+    "sql": "SELECT CAST(monthly_date AS DATE) as month, SUM(total_revenue) as gross_revenue, SUM(net_revenue) as net_revenue, ROUND(SUM(net_revenue)/SUM(total_revenue)*100, 2) as net_pct FROM agg_monthly_lineitem_revenue WHERE monthly_date >= (SELECT MAX(monthly_date) FROM agg_monthly_lineitem_revenue) - INTERVAL '3 months' GROUP BY month ORDER BY month",
+    "columns": [
+      "month",
+      "gross_revenue",
+      "net_revenue",
+      "net_pct"
+    ],
+    "rows": [
+      {
+        "month": "1998-09-01",
+        "gross_revenue": "164877975.4447",
+        "net_revenue": "158223197.440857",
+        "net_pct": 95.96
+      },
+      {
+        "month": "1998-10-01",
+        "gross_revenue": "107210377.9097",
+        "net_revenue": "102968607.942541",
+        "net_pct": 96.04
+      },
+      {
+        "month": "1998-11-01",
+        "gross_revenue": "36169008.9490",
+        "net_revenue": "34747059.308018",
+        "net_pct": 96.07
+      },
+      {
+        "month": "1998-12-01",
+        "gross_revenue": "91593.3680",
+        "net_revenue": "87969.193328",
+        "net_pct": 96.04
+      }
+    ],
+    "count": 4
+  },
+  "revenue-per-order-trend": {
+    "sql": "SELECT CAST(monthly_date AS DATE) as month, ROUND(SUM(total_revenue)/SUM(order_count), 2) as revenue_per_order FROM agg_monthly_lineitem_revenue GROUP BY month ORDER BY month LIMIT 24",
+    "columns": [
+      "month",
+      "revenue_per_order"
+    ],
+    "rows": [
+      {
+        "month": "1992-01-01",
+        "revenue_per_order": 33845.56
+      },
+      {
+        "month": "1992-02-01",
+        "revenue_per_order": 34105.32
+      },
+      {
+        "month": "1992-03-01",
+        "revenue_per_order": 34169.42
+      },
+      {
+        "month": "1992-04-01",
+        "revenue_per_order": 33933.48
+      },
+      {
+        "month": "1992-05-01",
+        "revenue_per_order": 34055.47
+      },
+      {
+        "month": "1992-06-01",
+        "revenue_per_order": 34381.9
+      },
+      {
+        "month": "1992-07-01",
+        "revenue_per_order": 33796.88
+      },
+      {
+        "month": "1992-08-01",
+        "revenue_per_order": 34030.43
+      },
+      {
+        "month": "1992-09-01",
+        "revenue_per_order": 34342.64
+      },
+      {
+        "month": "1992-10-01",
+        "revenue_per_order": 34648.78
+      },
+      {
+        "month": "1992-11-01",
+        "revenue_per_order": 34504.16
+      },
+      {
+        "month": "1992-12-01",
+        "revenue_per_order": 34508.87
+      },
+      {
+        "month": "1993-01-01",
+        "revenue_per_order": 34331.72
+      },
+      {
+        "month": "1993-02-01",
+        "revenue_per_order": 34077.95
+      },
+      {
+        "month": "1993-03-01",
+        "revenue_per_order": 34226.28
+      },
+      {
+        "month": "1993-04-01",
+        "revenue_per_order": 34188.85
+      },
+      {
+        "month": "1993-05-01",
+        "revenue_per_order": 34564.46
+      },
+      {
+        "month": "1993-06-01",
+        "revenue_per_order": 34140.96
+      },
+      {
+        "month": "1993-07-01",
+        "revenue_per_order": 34478.59
+      },
+      {
+        "month": "1993-08-01",
+        "revenue_per_order": 34036.37
+      },
+      {
+        "month": "1993-09-01",
+        "revenue_per_order": 33753.79
+      },
+      {
+        "month": "1993-10-01",
+        "revenue_per_order": 34227.43
+      },
+      {
+        "month": "1993-11-01",
+        "revenue_per_order": 34318.78
+      },
+      {
+        "month": "1993-12-01",
+        "revenue_per_order": 34282.97
+      }
+    ],
+    "count": 24
+  },
+  "mom-growth-rate": {
+    "sql": "WITH monthly AS (SELECT CAST(monthly_date AS DATE) as month, SUM(total_revenue) as revenue FROM agg_monthly_lineitem_revenue GROUP BY month), with_prev AS (SELECT month, revenue, LAG(revenue) OVER (ORDER BY month) as prev_revenue FROM monthly) SELECT month, ROUND(revenue, 2) as revenue, ROUND((revenue - prev_revenue)/prev_revenue*100, 2) as mom_growth_pct FROM with_prev WHERE prev_revenue IS NOT NULL ORDER BY month LIMIT 24",
+    "columns": [
+      "month",
+      "revenue",
+      "mom_growth_pct"
+    ],
+    "rows": [
+      {
+        "month": "1992-02-01",
+        "revenue": "91504579.04",
+        "mom_growth_pct": 179.3
+      },
+      {
+        "month": "1992-03-01",
+        "revenue": "169856168.69",
+        "mom_growth_pct": 85.63
+      },
+      {
+        "month": "1992-04-01",
+        "revenue": "225555869.65",
+        "mom_growth_pct": 32.79
+      },
+      {
+        "month": "1992-05-01",
+        "revenue": "264883459.28",
+        "mom_growth_pct": 17.44
+      },
+      {
+        "month": "1992-06-01",
+        "revenue": "261061789.94",
+        "mom_growth_pct": -1.44
+      },
+      {
+        "month": "1992-07-01",
+        "revenue": "270172232.84",
+        "mom_growth_pct": 3.49
+      },
+      {
+        "month": "1992-08-01",
+        "revenue": "266764570.65",
+        "mom_growth_pct": -1.26
+      },
+      {
+        "month": "1992-09-01",
+        "revenue": "255474884.16",
+        "mom_growth_pct": -4.23
+      },
+      {
+        "month": "1992-10-01",
+        "revenue": "265478927.34",
+        "mom_growth_pct": 3.92
+      },
+      {
+        "month": "1992-11-01",
+        "revenue": "254985758.79",
+        "mom_growth_pct": -3.95
+      },
+      {
+        "month": "1992-12-01",
+        "revenue": "256883997.06",
+        "mom_growth_pct": 0.74
+      },
+      {
+        "month": "1993-01-01",
+        "revenue": "258552146.68",
+        "mom_growth_pct": 0.65
+      },
+      {
+        "month": "1993-02-01",
+        "revenue": "233263599.20",
+        "mom_growth_pct": -9.78
+      },
+      {
+        "month": "1993-03-01",
+        "revenue": "256662903.16",
+        "mom_growth_pct": 10.03
+      },
+      {
+        "month": "1993-04-01",
+        "revenue": "254501820.37",
+        "mom_growth_pct": -0.84
+      },
+      {
+        "month": "1993-05-01",
+        "revenue": "258300206.02",
+        "mom_growth_pct": 1.49
+      },
+      {
+        "month": "1993-06-01",
+        "revenue": "253769752.21",
+        "mom_growth_pct": -1.75
+      },
+      {
+        "month": "1993-07-01",
+        "revenue": "265967862.39",
+        "mom_growth_pct": 4.81
+      },
+      {
+        "month": "1993-08-01",
+        "revenue": "260310126.27",
+        "mom_growth_pct": -2.13
+      },
+      {
+        "month": "1993-09-01",
+        "revenue": "246740202.53",
+        "mom_growth_pct": -5.21
+      },
+      {
+        "month": "1993-10-01",
+        "revenue": "262763957.88",
+        "mom_growth_pct": 6.49
+      },
+      {
+        "month": "1993-11-01",
+        "revenue": "243869264.84",
+        "mom_growth_pct": -7.19
+      },
+      {
+        "month": "1993-12-01",
+        "revenue": "262367547.95",
+        "mom_growth_pct": 7.59
+      },
+      {
+        "month": "1994-01-01",
+        "revenue": "262962873.00",
+        "mom_growth_pct": 0.23
+      }
+    ],
+    "count": 24
+  },
+  "customer-repeat-rate": {
+    "sql": "SELECT 'not_available' as status, 'Schema has no customer purchase history \u2014 only aggregated order counts per customer per day' as reason",
+    "columns": [
+      "status",
+      "reason"
+    ],
+    "rows": [
+      {
+        "status": "not_available",
+        "reason": "Schema has no customer purchase history \u2014 only aggregated order counts per customer per day"
+      }
+    ],
+    "count": 1
+  }
+}

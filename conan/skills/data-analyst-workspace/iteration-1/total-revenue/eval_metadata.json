@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "total-revenue",
+  "prompt": "what is total revenue",
+  "assertions": [
+    "contains_markdown_table",
+    "leading_number",
+    "confidence_high (>=70%)"
+  ]
+}

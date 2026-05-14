@@ -1,0 +1,23 @@
+{
+  "eval_id": 5,
+  "eval_name": "avg-discount-by-month",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "10-row table with percentages"
+    },
+    {
+      "text": "pct_values",
+      "passed": true,
+      "evidence": "Values like 5.09%, 5.03%"
+    },
+    {
+      "text": "confidence_appropriate (>=60%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

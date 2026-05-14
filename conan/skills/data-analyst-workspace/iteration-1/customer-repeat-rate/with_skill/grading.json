@@ -1,0 +1,23 @@
+{
+  "eval_id": 9,
+  "eval_name": "customer-repeat-rate",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "states_unavailable",
+      "passed": true,
+      "evidence": "States 'Data is not available'"
+    },
+    {
+      "text": "explains_why",
+      "passed": true,
+      "evidence": "Explains pre-aggregated schema lacks order-level history"
+    },
+    {
+      "text": "low_confidence (<=50%)",
+      "passed": true,
+      "evidence": "40%"
+    }
+  ]
+}

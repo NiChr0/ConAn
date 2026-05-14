@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "monthly-revenue-trend",
+  "prompt": "monthly revenue trend",
+  "assertions": [
+    "contains_markdown_table",
+    "has_month_column",
+    "multiple_rows",
+    "confidence_appropriate (>=65%)"
+  ]
+}

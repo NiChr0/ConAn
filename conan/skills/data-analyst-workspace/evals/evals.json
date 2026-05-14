@@ -1,0 +1,110 @@
+{
+  "skill_name": "data-analyst",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "daily-revenue-30d",
+      "prompt": "daily revenue last 30 days",
+      "expected_output": "Markdown table with daily revenue; mentions actual data date range (1998); confidence reflects data availability",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "mentions_date_range", "check": "output references actual data range or 1998"},
+        {"name": "confidence_appropriate", "check": "confidence score present and <= 85%"},
+        {"name": "leading_number", "check": "first sentence contains a number"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "total-revenue",
+      "prompt": "what is total revenue",
+      "expected_output": "Single aggregate number with markdown table; high confidence T1 source",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "leading_number", "check": "first sentence contains a specific dollar/numeric figure"},
+        {"name": "confidence_high", "check": "confidence score >= 70%"}
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "top5-suppliers",
+      "prompt": "top 5 suppliers by order count",
+      "expected_output": "Table of 5 suppliers with order counts ranked; confidence >= 70%",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "five_rows", "check": "table has 5 data rows"},
+        {"name": "order_count_present", "check": "order count or orders column present"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 70%"}
+      ]
+    },
+    {
+      "id": 4,
+      "eval_name": "monthly-revenue-trend",
+      "prompt": "monthly revenue trend",
+      "expected_output": "Time series table with month and revenue columns; multiple rows",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "has_month_column", "check": "table includes month or date column"},
+        {"name": "multiple_rows", "check": "table has more than 5 rows"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 65%"}
+      ]
+    },
+    {
+      "id": 5,
+      "eval_name": "avg-discount-by-month",
+      "prompt": "average discount rate by month",
+      "expected_output": "Monthly discount percentages in a table",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "pct_values", "check": "values include % or decimal discount figures"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 60%"}
+      ]
+    },
+    {
+      "id": 6,
+      "eval_name": "net-vs-gross-last-quarter",
+      "prompt": "net revenue as a percentage of gross revenue last quarter",
+      "expected_output": "Table showing gross, net, and net% columns for last quarter months",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "has_percentage", "check": "output contains a percentage figure"},
+        {"name": "has_both_net_gross", "check": "output references both net and gross revenue"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 60%"}
+      ]
+    },
+    {
+      "id": 7,
+      "eval_name": "revenue-per-order-trend",
+      "prompt": "revenue per order trend this year",
+      "expected_output": "Monthly revenue per order over time; notes data is from 1998 not current year",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "revenue_per_order_col", "check": "output contains revenue per order values"},
+        {"name": "mentions_data_period", "check": "output references actual data period"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 60%"}
+      ]
+    },
+    {
+      "id": 8,
+      "eval_name": "mom-growth-rate",
+      "prompt": "month over month revenue growth rate",
+      "expected_output": "Table with months, revenue, and MoM growth % — mix of positive/negative values",
+      "assertions": [
+        {"name": "contains_markdown_table", "check": "output contains a | table |"},
+        {"name": "growth_pct_col", "check": "output contains growth percentage values"},
+        {"name": "mixed_positive_negative", "check": "output contains both positive and negative growth figures"},
+        {"name": "confidence_appropriate", "check": "confidence score >= 60%"}
+      ]
+    },
+    {
+      "id": 9,
+      "eval_name": "customer-repeat-rate",
+      "prompt": "customer repeat order rate",
+      "expected_output": "Clearly states metric is not computable from available schema; explains why; low confidence",
+      "assertions": [
+        {"name": "states_unavailable", "check": "output says data or metric is not available"},
+        {"name": "explains_why", "check": "output explains schema limitation"},
+        {"name": "low_confidence", "check": "confidence score <= 50%"}
+      ]
+    }
+  ]
+}

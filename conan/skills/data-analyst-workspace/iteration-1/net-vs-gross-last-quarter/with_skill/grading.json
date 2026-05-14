@@ -1,0 +1,28 @@
+{
+  "eval_id": 6,
+  "eval_name": "net-vs-gross-last-quarter",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "4-row table with gross/net/pct columns"
+    },
+    {
+      "text": "has_percentage",
+      "passed": true,
+      "evidence": "95.96%, 96.04% shown"
+    },
+    {
+      "text": "has_both_net_gross",
+      "passed": true,
+      "evidence": "Both gross_revenue and net_revenue columns"
+    },
+    {
+      "text": "confidence_appropriate (>=60%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eval_id": 8,
+  "eval_name": "mom-growth-rate",
+  "prompt": "month over month revenue growth rate",
+  "assertions": [
+    "contains_markdown_table",
+    "growth_pct_col",
+    "mixed_positive_negative",
+    "confidence_appropriate (>=60%)"
+  ]
+}

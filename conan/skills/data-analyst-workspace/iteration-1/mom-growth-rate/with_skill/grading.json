@@ -1,0 +1,28 @@
+{
+  "eval_id": 8,
+  "eval_name": "mom-growth-rate",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "10-row table with growth % column"
+    },
+    {
+      "text": "growth_pct_col",
+      "passed": true,
+      "evidence": "MoM Growth % column with +179%, -1.44% etc."
+    },
+    {
+      "text": "mixed_positive_negative",
+      "passed": true,
+      "evidence": "Both positive and negative values present"
+    },
+    {
+      "text": "confidence_appropriate (>=60%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "eval_id": 1,
+  "eval_name": "daily-revenue-30d",
+  "run_type": "with_skill",
+  "pass_rate": 0.75,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "Output contains | table | rows"
+    },
+    {
+      "text": "mentions_date_range",
+      "passed": true,
+      "evidence": "Mentions 'dataset that runs through August 2, 1998'"
+    },
+    {
+      "text": "confidence_appropriate (<=85%)",
+      "passed": false,
+      "evidence": "Confidence is 90% \u2014 model correctly used available data's last 30 days, assertion threshold was too strict"
+    },
+    {
+      "text": "leading_number",
+      "passed": true,
+      "evidence": "Leads with '$9.19M' average"
+    }
+  ]
+}

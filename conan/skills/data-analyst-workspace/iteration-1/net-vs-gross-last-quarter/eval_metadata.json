@@ -1,0 +1,11 @@
+{
+  "eval_id": 6,
+  "eval_name": "net-vs-gross-last-quarter",
+  "prompt": "net revenue as a percentage of gross revenue last quarter",
+  "assertions": [
+    "contains_markdown_table",
+    "has_percentage",
+    "has_both_net_gross",
+    "confidence_appropriate (>=60%)"
+  ]
+}

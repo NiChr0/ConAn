@@ -1,0 +1,28 @@
+{
+  "eval_id": 3,
+  "eval_name": "top5-suppliers",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "5-row table present"
+    },
+    {
+      "text": "five_rows",
+      "passed": true,
+      "evidence": "Exactly 5 suppliers shown"
+    },
+    {
+      "text": "order_count_present",
+      "passed": true,
+      "evidence": "total_orders column present"
+    },
+    {
+      "text": "confidence_appropriate (>=70%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

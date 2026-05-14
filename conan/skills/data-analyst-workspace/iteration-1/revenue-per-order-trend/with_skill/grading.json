@@ -1,0 +1,28 @@
+{
+  "eval_id": 7,
+  "eval_name": "revenue-per-order-trend",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "10-row table present"
+    },
+    {
+      "text": "revenue_per_order_col",
+      "passed": true,
+      "evidence": "Revenue per Order column with $33K-$34K values"
+    },
+    {
+      "text": "mentions_data_period",
+      "passed": true,
+      "evidence": "Mentions Jan 1992 \u2013 Dec 1993"
+    },
+    {
+      "text": "confidence_appropriate (>=60%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

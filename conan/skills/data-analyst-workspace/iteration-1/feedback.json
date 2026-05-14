@@ -1,0 +1,45 @@
+{
+  "reviews": [
+    {
+      "run_id": "avg-discount-by-month-with_skill",
+      "feedback": "is it correct to average the average? have reservations for this",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "daily-revenue-30d-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "total-revenue-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "top5-suppliers-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "monthly-revenue-trend-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "revenue-per-order-trend-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "mom-growth-rate-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    },
+    {
+      "run_id": "customer-repeat-rate-with_skill",
+      "feedback": "looks good",
+      "timestamp": "2026-05-14T20:53:29.267Z"
+    }
+  ],
+  "status": "in_progress"
+}

@@ -1,0 +1,28 @@
+{
+  "eval_id": 4,
+  "eval_name": "monthly-revenue-trend",
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {
+      "text": "contains_markdown_table",
+      "passed": true,
+      "evidence": "10-row table shown"
+    },
+    {
+      "text": "has_month_column",
+      "passed": true,
+      "evidence": "Month column present"
+    },
+    {
+      "text": "multiple_rows",
+      "passed": true,
+      "evidence": "10 rows shown"
+    },
+    {
+      "text": "confidence_appropriate (>=65%)",
+      "passed": true,
+      "evidence": "90%"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "top5-suppliers",
+  "prompt": "top 5 suppliers by order count",
+  "assertions": [
+    "contains_markdown_table",
+    "five_rows",
+    "order_count_present",
+    "confidence_appropriate (>=70%)"
+  ]
+}

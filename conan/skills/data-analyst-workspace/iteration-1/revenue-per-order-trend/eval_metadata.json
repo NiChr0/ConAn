@@ -1,0 +1,11 @@
+{
+  "eval_id": 7,
+  "eval_name": "revenue-per-order-trend",
+  "prompt": "revenue per order trend this year",
+  "assertions": [
+    "contains_markdown_table",
+    "revenue_per_order_col",
+    "mentions_data_period",
+    "confidence_appropriate (>=60%)"
+  ]
+}
