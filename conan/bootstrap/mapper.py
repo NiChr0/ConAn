@@ -1,14 +1,24 @@
 from pathlib import Path
 from conan.models import (
-    SemanticLayer, KnowledgeBase, KPIEntry, TableSource,
+    SemanticLayer, SemanticMetric, KnowledgeBase, KPIEntry, TableSource,
     KPIMaturity, KPITier, SourceTier,
 )
+
+_DEFAULT_CONFIDENCE_CEILING = 70
 
 _DOMAIN_KEYWORDS: dict[str, list[str]] = {
     "revenue": ["revenue", "sales", "mrr", "arr", "gmv", "income", "payment"],
     "users": ["user", "customer", "subscriber", "churn", "retention", "signup"],
     "operations": ["order", "transaction", "purchase", "fulfillment", "delivery"],
     "engagement": ["session", "visit", "engagement", "click", "conversion", "view"],
+}
+
+_DOMAIN_PREFIX: dict[str, str] = {
+    "revenue": "REV",
+    "users": "USR",
+    "operations": "OPS",
+    "engagement": "ENG",
+    "general": "GEN",
 }
 
 
@@ -28,7 +38,7 @@ def _assign_source_tier(model_name: str) -> SourceTier:
     return SourceTier.t3
 
 
-def _find_source_table(metric: object, layer: SemanticLayer) -> str:
+def _find_source_table(metric: SemanticMetric, layer: SemanticLayer) -> str:
     measure_name = metric.type_params.get("measure", "")
     for sm in layer.semantic_models:
         if any(m.name == measure_name for m in sm.measures):
@@ -43,7 +53,7 @@ def map_semantic_layer(layer: SemanticLayer, project_name: str) -> KnowledgeBase
     for metric in layer.metrics:
         domain = _infer_domain(metric.name)
         domain_counters[domain] = domain_counters.get(domain, 0) + 1
-        prefix = domain[:3].upper()
+        prefix = _DOMAIN_PREFIX[domain]
         metric_id = f"{prefix}-{domain_counters[domain]:03d}"
         source_table = _find_source_table(metric, layer)
 
@@ -53,7 +63,7 @@ def map_semantic_layer(layer: SemanticLayer, project_name: str) -> KnowledgeBase
             domain=domain,
             tier=KPITier.l2,
             maturity=KPIMaturity.directional,
-            confidence_ceiling=70,
+            confidence_ceiling=_DEFAULT_CONFIDENCE_CEILING,
             source_table=source_table,
             description=metric.description or metric.label,
         ))
