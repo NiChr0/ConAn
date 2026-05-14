@@ -1,4 +1,5 @@
 from pathlib import Path
+import yaml
 from conan.models import (
     SemanticLayer, SemanticMetric, KnowledgeBase, KPIEntry, TableSource,
     KPIMaturity, KPITier, SourceTier,
@@ -84,7 +85,57 @@ def map_from_project(project_path: Path, project_name: str) -> KnowledgeBase:
     for filename in ["semantic_layer.yml", "semantic_models.yml"]:
         p = project_path / filename
         if p.exists():
-            return map_semantic_layer(SemanticLayer.from_yaml_file(p), project_name)
+            data = next(yaml.safe_load_all(p.read_text(encoding="utf-8")), None)
+            if not isinstance(data, dict):
+                continue
+            if "semantic_models" in data or "metrics" in data:
+                if _is_schemalytics_format(data):
+                    return _map_from_schemalytics(data, project_name)
+                return map_semantic_layer(SemanticLayer(**data), project_name)
     raise FileNotFoundError(
         f"No semantic_layer.yml or semantic_models.yml found in {project_path}"
     )
+
+
+def _is_schemalytics_format(data: dict) -> bool:
+    metrics = data.get("metrics", [])
+    if not metrics:
+        return False
+    first = metrics[0] if isinstance(metrics, list) else {}
+    return isinstance(first, dict) and "layer" in first
+
+
+def _map_from_schemalytics(data: dict, project_name: str) -> KnowledgeBase:
+    """Parse Schemalytics' rich semantic_layer.yml format into a KnowledgeBase."""
+    _LAYER_TIER = {"gold": SourceTier.t1, "silver": SourceTier.t2, "facts": SourceTier.t2,
+                   "dimensions": SourceTier.t2, "bronze": SourceTier.t3}
+
+    domain_counters: dict[str, int] = {}
+    kpis: list[KPIEntry] = []
+    sources: list[TableSource] = []
+
+    for entry in data.get("metrics", []):
+        if not isinstance(entry, dict) or not entry.get("name"):
+            continue
+        name = entry["name"]
+        layer = entry.get("layer", "")
+        tier = _LAYER_TIER.get(layer, SourceTier.t3)
+        description = entry.get("display_name") or entry.get("description") or ""
+        sources.append(TableSource(table_name=name, tier=tier, description=description))
+
+        if layer == "gold" and entry.get("source_fact"):
+            domain = _infer_domain(name)
+            domain_counters[domain] = domain_counters.get(domain, 0) + 1
+            prefix = _DOMAIN_PREFIX.get(domain, domain[:3].upper())
+            kpis.append(KPIEntry(
+                id=f"{prefix}-{domain_counters[domain]:03d}",
+                metric=name,
+                domain=domain,
+                tier=KPITier.l2,
+                maturity=KPIMaturity.directional,
+                confidence_ceiling=_DEFAULT_CONFIDENCE_CEILING,
+                source_table=entry["source_fact"],
+                description=description,
+            ))
+
+    return KnowledgeBase(project_name=project_name, kpis=kpis, sources=sources)
