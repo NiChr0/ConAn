@@ -56,6 +56,12 @@ def test_product_analyst_handles_failed_sub_query(skill, dispatch):
     mock_diagnostic = DiagnosticQueries(
         queries=[
             SQLGenerationResult(
+                sql="SELECT date_trunc('week', order_date), SUM(amount) FROM fct_orders GROUP BY 1",
+                source_table="fct_orders",
+                source_tier=SourceTier.t2,
+                reasoning="Check revenue trend",
+            ),
+            SQLGenerationResult(
                 sql="SELECT SUM(amount) FROM nonexistent_table",
                 source_table="nonexistent_table",
                 source_tier=SourceTier.t3,
@@ -70,8 +76,53 @@ def test_product_analyst_handles_failed_sub_query(skill, dispatch):
         confidence_justification="query execution error",
     )
 
+    execute_calls = {"n": 0}
+
+    def execute_side_effect(sql):
+        execute_calls["n"] += 1
+        if execute_calls["n"] == 1:
+            return [{"revenue": 100}]
+        raise ExecutorError("table not found")
+
     with patch("conan.skills.product_analyst.query_structured", side_effect=[mock_diagnostic, mock_analysis]), \
-         patch.object(skill.executor, "execute", side_effect=ExecutorError("table not found")):
+         patch.object(skill.executor, "execute", side_effect=execute_side_effect):
         result = skill.run("why did revenue drop?", dispatch)
 
     assert result.confidence == 40
+
+
+def test_product_analyst_returns_early_when_all_queries_fail(skill, dispatch):
+    """When every diagnostic query fails, return a SkillResult without calling synthesize."""
+    from conan.executor import ExecutorError
+    mock_diagnostic = DiagnosticQueries(
+        queries=[
+            SQLGenerationResult(
+                sql="SELECT SUM(amount) FROM nonexistent_a",
+                source_table="nonexistent_a",
+                source_tier=SourceTier.t3,
+                reasoning="Try source A",
+            ),
+            SQLGenerationResult(
+                sql="SELECT SUM(amount) FROM nonexistent_b",
+                source_table="nonexistent_b",
+                source_tier=SourceTier.t3,
+                reasoning="Try source B",
+            ),
+        ],
+        reasoning="Diagnostic attempt",
+    )
+
+    call_count = {"n": 0}
+
+    def side_effect(system, user, model_cls, **kwargs):
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            return mock_diagnostic
+        raise AssertionError("synthesize should not be called when all queries fail")
+
+    with patch("conan.skills.product_analyst.query_structured", side_effect=side_effect), \
+         patch.object(skill.executor, "execute", side_effect=ExecutorError("table not found")):
+        result = skill.run("why did revenue drop?", dispatch)
+
+    assert result.confidence <= 30
+    assert "not" in result.answer.lower() or "unavailable" in result.answer.lower() or "failed" in result.answer.lower()

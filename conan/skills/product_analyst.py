@@ -1,4 +1,5 @@
 # conan/skills/product_analyst.py
+from pathlib import Path
 from conan.skills.base import SkillBase
 from conan.models import (
     DiagnosticQueries, AnalysisResult, SkillResult, OrchestratorDispatch,
@@ -6,20 +7,9 @@ from conan.models import (
 from conan.executor import ExecutorError
 from conan.llm import query_structured
 
-_SYSTEM_DECOMPOSE = (
-    "You are a product analyst. Given a question about why a metric changed or what "
-    "caused an anomaly, generate 2-3 diagnostic SQL queries that explore different "
-    "potential causes (time trend, segmentation, funnel, etc.). "
-    "Use only tables and columns from the schema docs. Return structured output."
-)
-
-_SYSTEM_SYNTHESIZE = (
-    "You are a product analyst. Given a root cause question and results from "
-    "multiple diagnostic queries, synthesise a clear root cause analysis. "
-    "Be specific about what the data shows. "
-    "Score confidence: start at 50, +20 if T1/T2 source, +20 if metrics in catalog, "
-    "+15 for live data, +5 per successful diagnostic query. Cap at 85."
-)
+_SKILL_DIR = Path(__file__).parent / "product-analyst"
+_SYSTEM_DECOMPOSE = (_SKILL_DIR / "decompose.md").read_text()
+_SYSTEM_SYNTHESIZE = (_SKILL_DIR / "synthesize.md").read_text()
 
 
 class ProductAnalystSkill(SkillBase):
@@ -37,6 +27,19 @@ class ProductAnalystSkill(SkillBase):
                 results.append({"sql": q.sql, "source": q.source_table, "rows": rows[:20]})
             except ExecutorError as e:
                 results.append({"sql": q.sql, "error": str(e)})
+
+        if all("error" in r for r in results):
+            return SkillResult(
+                answer=(
+                    "Could not diagnose — all diagnostic queries failed due to data access errors. "
+                    "Check that the required tables are available in the schema."
+                ),
+                sql=diagnostic.queries[0].sql if diagnostic.queries else None,
+                source_table=None,
+                source_tier=None,
+                confidence=20,
+                confidence_justification="All diagnostic queries failed; no data available.",
+            )
 
         analysis = self._synthesize(question, results, context)
         primary = diagnostic.queries[0] if diagnostic.queries else None
@@ -60,7 +63,7 @@ class ProductAnalystSkill(SkillBase):
             f"{domain_section}\n\n"
             "Generate 2-3 diagnostic SQL queries to investigate this question."
         )
-        return query_structured(_SYSTEM_DECOMPOSE, user, DiagnosticQueries, model=self.model, max_tokens=1024)
+        return query_structured(_SYSTEM_DECOMPOSE, user, DiagnosticQueries, model=self.model, max_tokens=2048)
 
     def _synthesize(self, question: str, results: list[dict], context: dict) -> AnalysisResult:
         user = (
@@ -68,4 +71,4 @@ class ProductAnalystSkill(SkillBase):
             f"Diagnostic results:\n{results}\n\n"
             f"KPI Index:\n{context.get('kpis_index', '')}"
         )
-        return query_structured(_SYSTEM_SYNTHESIZE, user, AnalysisResult, model=self.model, max_tokens=512)
+        return query_structured(_SYSTEM_SYNTHESIZE, user, AnalysisResult, model=self.model, max_tokens=2048)
