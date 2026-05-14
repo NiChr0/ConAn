@@ -60,3 +60,38 @@ def test_data_queries_uses_saved_query_when_available(skill, dispatch, kb_path):
         result = skill.run("what was revenue?", dispatch)
 
     assert result.source_tier == SourceTier.t1  # saved queries are T1-equivalent
+
+
+def test_data_queries_appends_edge_cases_for_preaggregate_schema(skill, dispatch):
+    """edge-cases.md should appear in the SQL generation context when schema has avg_ columns."""
+    mock_sql = SQLGenerationResult(
+        sql="SELECT SUM(avg_discount * order_count) / SUM(order_count) FROM agg_monthly",
+        source_table="agg_monthly",
+        source_tier=SourceTier.t1,
+        reasoning="weighted avg",
+    )
+    mock_analysis = AnalysisResult(
+        answer="Avg discount is 5%",
+        confidence=80,
+        confidence_justification="T1 source",
+    )
+
+    captured_user_msgs = []
+
+    def capture_and_return(system, user, model_cls, **kwargs):
+        captured_user_msgs.append(user)
+        if model_cls.__name__ == "SQLGenerationResult":
+            return mock_sql
+        return mock_analysis
+
+    with patch("conan.skills.data_queries.query_structured", side_effect=capture_and_return), \
+         patch.object(skill.executor, "execute", return_value=[{"avg_discount_pct": 5.0}]), \
+         patch.object(skill.kb_loader, "load_for_skill", return_value={
+             "kpis_index": "avg_discount metric",
+             "source_priority": "T1 > T2 > T3",
+             "schema": "agg_monthly_lineitem_revenue: monthly_date, avg_discount, order_count",
+         }):
+        skill.run("average discount by month", dispatch)
+
+    sql_user_msg = captured_user_msgs[0]
+    assert "Edge Cases" in sql_user_msg or "Weighted" in sql_user_msg

@@ -1,32 +1,19 @@
 # conan/skills/data_queries.py
 import re
+from pathlib import Path
 from conan.skills.base import SkillBase
 from conan.models import (
     SQLGenerationResult, AnalysisResult, SkillResult, OrchestratorDispatch, SourceTier,
 )
 from conan.llm import query_structured
 
-_SYSTEM_SQL = (
-    "You are a senior data analyst with access to a DuckDB database. "
-    "Write a single SQL query to answer the question using only the tables and columns "
-    "listed in the Schema — no other tables or columns exist. "
-    "Select the table whose granularity matches the question (daily tables for daily "
-    "questions, monthly tables for monthly questions). "
-    "Prefer T1 (Gold) tables. Return structured output."
-)
+_SKILL_DIR = Path(__file__).parent / "data-analyst"
+_SYSTEM_SQL     = (_SKILL_DIR / "sql.md").read_text()
+_SYSTEM_ANALYZE = (_SKILL_DIR / "analysis.md").read_text()
+_EDGE_CASES     = (_SKILL_DIR / "references" / "edge-cases.md").read_text()
+_CONF_GUIDE     = (_SKILL_DIR / "references" / "confidence-guide.md").read_text()
 
-_SYSTEM_ANALYZE = (
-    "You are a data analyst. Answer the question based on the SQL result using this exact structure:\n"
-    "1. One sentence stating the key figure and what it means.\n"
-    "2. A markdown table of the result data. If the result is empty or null, write "
-    "'No data available for this period' and explain the likely reason (e.g. the dataset "
-    "predates the requested date range).\n"
-    "3. Confidence: [score]% — [one-line justification].\n\n"
-    "Confidence: start at 50. +20 if metric is in the KPI catalog. +20 if T1 source, "
-    "+10 if T2. +20 if SQL matches the catalog pattern. +15 if result has data rows. "
-    "-30 if result is empty or null. Cap at the metric's confidence_ceiling. "
-    "Never score above 60 for an empty or null result."
-)
+_PREAGG_PATTERN = re.compile(r"\bavg_\w+|\bagg_\w+", re.IGNORECASE)
 
 
 class DataQueriesSkill(SkillBase):
@@ -55,13 +42,16 @@ class DataQueriesSkill(SkillBase):
         )
 
     def _generate_sql(self, question: str, context: dict) -> SQLGenerationResult:
+        schema = context.get("schema", "")
         domain_section = f"\nDomain KPIs:\n{context['kpi_domain']}" if "kpi_domain" in context else ""
+        edge_cases_section = f"\n\n---\n\n{_EDGE_CASES}" if _PREAGG_PATTERN.search(schema) else ""
         user = (
             f"Question: {question}\n\n"
             f"KPI Index:\n{context.get('kpis_index', '')}\n\n"
             f"Source Priority:\n{context.get('source_priority', '')}\n\n"
-            f"Schema:\n{context.get('schema', '')}"
+            f"Schema:\n{schema}"
             f"{domain_section}"
+            f"{edge_cases_section}"
         )
         return query_structured(_SYSTEM_SQL, user, SQLGenerationResult, model=self.model, max_tokens=4096)
 
@@ -71,7 +61,8 @@ class DataQueriesSkill(SkillBase):
             f"SQL: {sql_result.sql}\n"
             f"Source: {sql_result.source_table} ({sql_result.source_tier.value})\n\n"
             f"Result (first 20 rows):\n{rows[:20]}\n\n"
-            f"KPI Index:\n{context.get('kpis_index', '')}"
+            f"KPI Index:\n{context.get('kpis_index', '')}\n\n"
+            f"---\n\n{_CONF_GUIDE}"
         )
         return query_structured(_SYSTEM_ANALYZE, user, AnalysisResult, model=self.model, max_tokens=4096)
 
