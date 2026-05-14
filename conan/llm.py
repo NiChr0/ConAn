@@ -6,7 +6,6 @@ from pydantic import BaseModel
 
 T = TypeVar("T", bound=BaseModel)
 
-OLLAMA_DEFAULT_MODEL = os.environ.get("CONAN_SKILL_MODEL", "gemma4:e4b")
 ANTHROPIC_DEFAULT_MODEL = "claude-haiku-4-5-20251001"
 MAX_RETRIES = 3
 
@@ -40,7 +39,10 @@ def query_structured(
     provider = get_provider()
 
     if model is None:
-        model = ANTHROPIC_DEFAULT_MODEL if provider == "anthropic" else OLLAMA_DEFAULT_MODEL
+        if provider == "anthropic":
+            model = ANTHROPIC_DEFAULT_MODEL
+        else:
+            model = os.environ.get("CONAN_SKILL_MODEL", "gemma4:e4b")
 
     messages = [
         {"role": "system", "content": system},

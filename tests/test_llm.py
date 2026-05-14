@@ -1,5 +1,3 @@
-import os
-import pytest
 from unittest.mock import patch, MagicMock
 from pydantic import BaseModel
 from conan.llm import query_structured
